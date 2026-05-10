@@ -1,0 +1,5 @@
+.DS_Store
+.claude/
+
+# Local secrets — never commit
+figma-secrets.local.md

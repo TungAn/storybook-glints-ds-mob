@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glints — Streamer Jobs Category Page (Strict Tokens)</title>
+  <style>
+    /* =============================================
+       Aries Design System — Token Map
+       Hex values fetched from Figma node 12975:575
+       ============================================= */
+    :root {
+      /* Background */
+      --color-bg-normal:                #FFFFFF;
+      --color-bg-supplementary:         #F7F9FA;
+      --color-bg-supplementary2:        #F3F3F3;
+      --color-bg-action01:              #1A73E8;
+      --color-bg-action01-active:       #58BFFF;
+      --color-bg-action-disabled:       #F3F3F3;
+      --color-bg-primary-bright:        #1A73E8;
+      --color-bg-primary-muted:         #E6F4FA;
+      --color-bg-outstanding:           #C3E8FF;
+      --color-bg-enticing-muted:        #FCE9C8;
+      --color-bg-enticing-bright:       #EC7200;
+      --color-bg-dark:                  #2D2D2D;
+
+      /* Text */
+      --color-text-normal:              #666666;
+      --color-text-supplementary:       #808080;
+      --color-text-on-dark:             #FFFFFF;
+      --color-text-active:              #1A73E8;
+      --color-text-outstanding:         #2D2D2D;
+      --color-text-enticing:            #EC7200;
+
+      /* Border */
+      --color-border-normal:            #DDDDDD;
+
+      /* Icon */
+      --color-icon-normal:              #808080;
+      --color-icon-on-dark:             #FFFFFF;
+      --color-icon-disabled:            #DDDDDD;
+
+      /* Spacing — 4-point grid */
+      --space-small-4:                  4px;
+      --space-small-8:                  8px;
+      --space-small-12:                 12px;
+      --space-medium-16:                16px;
+      --space-medium-20:                20px;
+      --space-medium-24:                24px;
+      --space-large-28:                 28px;
+      --space-large-32:                 32px;
+      --space-large-40:                 40px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--color-bg-supplementary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: var(--space-large-32) var(--space-medium-20) var(--space-large-40);
+      gap: var(--space-large-32);
+      color: var(--color-text-normal);
+    }
+
+    h1.section-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--color-text-normal);
+      text-transform: uppercase;
+      letter-spacing: 0.2px;
+      align-self: flex-start;
+      line-height: 1.4;
+    }
+
+    /* === Aries text styles (Android subset) === */
+    .t-page-title  { font-weight: 600; font-size: 18px; line-height: 1.5; letter-spacing: 0.15px; color: var(--color-text-outstanding); }
+    .t-subtitle-1  { font-weight: 600; font-size: 16px; line-height: 1.5; letter-spacing: 0.15px; color: var(--color-text-outstanding); }
+    .t-body-1      { font-weight: 400; font-size: 14px; line-height: 1.5; color: var(--color-text-normal); }
+    .t-body-2      { font-weight: 600; font-size: 14px; line-height: 1.4; color: var(--color-text-normal); }
+    .t-button      { font-weight: 700; font-size: 14px; line-height: 1.5; letter-spacing: 0.25px; text-transform: uppercase; }
+    .t-caption     { font-weight: 500; font-size: 12px; line-height: 1.4; letter-spacing: 0.2px; color: var(--color-text-supplementary); }
+    .t-overline    { font-weight: 500; font-size: 10px; line-height: 1.4; letter-spacing: 0.2px; color: var(--color-text-supplementary); text-transform: uppercase; }
+
+    /* === PHONE SHELL — 360x640 baseline (per screen-size.md) === */
+    .phone {
+      width: 360px;
+      background: var(--color-bg-normal);
+      border-radius: 36px;
+      box-shadow: 0 0 0 1px var(--color-border-normal);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* === STATUS BAR — system chrome, neutral === */
+    .status-bar {
+      background: var(--color-bg-primary-muted);
+      padding: var(--space-small-12) var(--space-medium-20) var(--space-small-4);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-text-outstanding);
+    }
+    .status-right { display: flex; align-items: center; gap: var(--space-small-8); }
+
+    /* === NAV HEADER — back-only variant === */
+    .nav-header {
+      background: var(--color-bg-primary-muted);
+      padding: var(--space-small-8) var(--space-medium-16);
+      display: flex;
+      align-items: center;
+      gap: var(--space-small-8);
+      min-height: 44px;
+    }
+    .icon-btn {
+      width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      border: none; background: transparent;
+      cursor: pointer;
+    }
+
+    /* === HERO / CATEGORY HEADER === */
+    .hero {
+      background: var(--color-bg-primary-muted);
+      padding: var(--space-small-8) var(--space-medium-20) var(--space-medium-24);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: var(--space-medium-16);
+    }
+    .hero-text h2 {
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 1.5;
+      color: var(--color-text-outstanding);
+      letter-spacing: 0;
+    }
+    .hero-text p {
+      margin-top: var(--space-small-4);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--color-text-normal);
+    }
+    .hero-illustration {
+      width: 80px; height: 80px;
+      border-radius: var(--space-medium-16);
+      background: var(--color-bg-primary-bright);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* === FEED LIST === */
+    .feed {
+      background: var(--color-bg-supplementary);
+      padding: var(--space-small-12);
+      display: flex; flex-direction: column; gap: var(--space-small-12);
+      flex: 1;
+    }
+
+    /* === JOB CARD === */
+    .job-card {
+      background: var(--color-bg-normal);
+      border-radius: var(--space-small-12);
+      padding: var(--space-medium-16);
+      display: flex; flex-direction: column; gap: var(--space-small-8);
+      border: 1px solid var(--color-border-normal);
+    }
+
+    .job-card-top {
+      display: flex; gap: var(--space-small-12); align-items: flex-start; justify-content: space-between;
+    }
+    .job-title {
+      font-weight: 600; font-size: 16px; line-height: 1.5; letter-spacing: 0.15px;
+      color: var(--color-text-outstanding);
+      flex: 1;
+    }
+    .job-salary {
+      font-weight: 600; font-size: 14px; line-height: 1.4;
+      color: var(--color-text-active);
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+
+    /* premium row above title (Job 2) */
+    .premium-row {
+      display: flex; gap: var(--space-small-4); align-items: center;
+    }
+    /* Tag — Outstanding intent (verified Aries Tag, Color=Outstanding, Type=Muted, Rounded=true) */
+    .tag-outstanding {
+      background: var(--color-bg-outstanding);
+      color: var(--color-text-outstanding);
+      font-size: 12px;
+      font-weight: 400;
+      padding: 2px var(--space-small-8);
+      border-radius: 32px;          /* Aries Tag pill */
+      letter-spacing: 0;
+      line-height: 1.5;
+    }
+    /* Tag — Enticing intent (verified Aries Tag, Color=Orange, Type=Muted, Rounded=true) */
+    .tag-enticing {
+      background: var(--color-bg-enticing-muted);
+      color: var(--color-text-enticing);
+      font-size: 12px;
+      font-weight: 400;
+      padding: 2px var(--space-small-8);
+      border-radius: 32px;          /* Aries Tag pill */
+      letter-spacing: 0;
+      line-height: 1.5;
+    }
+
+    .company-info {
+      font-weight: 400; font-size: 12px; line-height: 1.5;
+      color: var(--color-text-supplementary);
+    }
+
+    .tag-row {
+      display: flex; flex-wrap: wrap; gap: var(--space-small-4);
+    }
+    /* Skill Tag — Aries Tag, Color=Grey, Type=Muted, Rounded=true (radius 32 pill) */
+    .tag-attr {
+      background: var(--color-bg-supplementary);
+      color: var(--color-text-normal);
+      font-size: 12px;
+      font-weight: 400;
+      padding: 2px var(--space-small-8);
+      border-radius: 32px;          /* Aries Tag pill */
+      letter-spacing: 0;
+      line-height: 1.5;
+    }
+
+    .location {
+      display: flex; align-items: center; gap: var(--space-small-4);
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--color-text-supplementary);
+      line-height: 1.4;
+    }
+    .location svg { flex-shrink: 0; }
+
+    .recruiter-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: var(--space-small-8);
+      border-top: 1px solid var(--color-border-normal);
+      margin-top: var(--space-small-4);
+    }
+    .recruiter {
+      display: flex; align-items: center; gap: var(--space-small-8);
+    }
+    /* Single Avatar — fallback uses Background/primary_muted + Text/active */
+    .avatar {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--color-bg-primary-muted);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--color-text-active);
+      font-weight: 700; font-size: 13px;
+      flex-shrink: 0;
+    }
+    .recruiter-name {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--color-text-normal);
+      letter-spacing: 0.2px;
+    }
+
+    /* CTA Button — Primary (rounded rectangle, NOT pill) */
+    .cta-btn {
+      background: var(--color-bg-action01);
+      color: var(--color-text-on-dark);
+      font-weight: 700; font-size: 14px;
+      letter-spacing: 0.25px;
+      text-transform: uppercase;
+      padding: var(--space-small-12) var(--space-medium-16);
+      border-radius: 8px;       /* Aries CTA Button — fixed radius */
+      border: none;
+      cursor: pointer;
+      line-height: 1.5;
+      height: 36px;             /* Small CTA in card footer */
+      display: inline-flex; align-items: center;
+    }
+    .cta-btn--active   { background: var(--color-bg-action01-active); }
+    .cta-btn--disabled {
+      background: var(--color-bg-action-disabled);
+      color: var(--color-text-supplementary);
+      cursor: not-allowed;
+    }
+
+    /* === Floating Button === pill/circular per spec (radius 99) */
+    .floating-btn {
+      position: absolute;
+      width: 36px; height: 36px;
+      border-radius: 99px;
+      background: var(--color-bg-supplementary2);
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--color-border-normal);
+    }
+    .floating-btn--more  { right: var(--space-small-12); top: 460px; }
+    .floating-btn--panel { right: 0; bottom: 110px; width: 24px; border-radius: 12px 0 0 12px; height: 40px; }
+
+    /* === STATES PANEL === */
+    .states-panel {
+      width: 360px;
+      background: var(--color-bg-normal);
+      border-radius: var(--space-medium-16);
+      padding: var(--space-medium-20);
+      border: 1px solid var(--color-border-normal);
+    }
+    .states-panel h3 {
+      font-weight: 700; font-size: 14px; line-height: 1.5; letter-spacing: 0.25px;
+      text-transform: uppercase;
+      color: var(--color-text-outstanding);
+      margin-bottom: var(--space-small-12);
+    }
+    .state-row {
+      display: flex; align-items: center; gap: var(--space-small-8); flex-wrap: wrap;
+      margin-bottom: var(--space-small-8);
+    }
+    .state-label {
+      width: 96px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--color-text-supplementary);
+      letter-spacing: 0.2px;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 class="section-label">Streamer Jobs — Category Feed (English, strict tokens)</h1>
+
+  <!-- ============= MAIN SCREEN ============= -->
+  <div class="phone" data-component="Screen — Streamer Jobs Category">
+
+    <!-- Status bar -->
+    <div class="status-bar">
+      <span>9:12</span>
+      <div class="status-right">
+        <span>49%</span>
+      </div>
+    </div>
+
+    <!-- Nav header — Back-only -->
+    <div class="nav-header" data-component="Nav header / Back only">
+      <button class="icon-btn" aria-label="Back">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M15 6l-6 6 6 6" stroke="var(--color-icon-normal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Hero / Category header -->
+    <div class="hero" data-component="Section / Category header">
+      <div class="hero-text">
+        <h2>Streamer jobs</h2>
+        <p>Flexible part-time roles · Now hiring</p>
+      </div>
+      <div class="hero-illustration" data-component="Illustration / Live streaming">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+          <rect x="2" y="6" width="14" height="12" rx="2" stroke="var(--color-icon-on-dark)" stroke-width="2"/>
+          <path d="M22 8l-6 4 6 4V8z" fill="var(--color-icon-on-dark)"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Feed of Job Cards -->
+    <div class="feed" data-component="Feed list">
+
+      <!-- ===== JOB CARD 1 ===== -->
+      <article class="job-card" data-component="Job Card">
+        <div class="job-card-top">
+          <div class="job-title">New media operations</div>
+          <div class="job-salary" data-component="Salary / Text-active">$5–10K</div>
+        </div>
+
+        <div class="company-info" data-component="Job Card / Company Info">
+          Beijing Fuyuankang Health Tech · 20–99 employees
+        </div>
+
+        <div class="tag-row">
+          <span class="tag-attr" data-component="User attribute">Any experience</span>
+          <span class="tag-attr" data-component="User attribute">Bachelor's</span>
+          <span class="tag-attr" data-component="User attribute">Part-time</span>
+          <span class="tag-attr" data-component="User attribute">Youth vision</span>
+          <span class="tag-attr" data-component="User attribute">Pro institution</span>
+        </div>
+
+        <div class="location" data-component="Job Card / Job Location">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <path d="M12 22s7-7.5 7-13a7 7 0 10-14 0c0 5.5 7 13 7 13z" stroke="var(--color-icon-normal)" stroke-width="1.6"/>
+            <circle cx="12" cy="9" r="2.5" stroke="var(--color-icon-normal)" stroke-width="1.6"/>
+          </svg>
+          Beijing · Fangshan · Liangxiang
+        </div>
+
+        <div class="recruiter-row">
+          <div class="recruiter">
+            <div class="avatar" data-component="Single Avatar">W</div>
+            <span class="recruiter-name">Ms. Wu · Hiring Manager</span>
+          </div>
+          <button class="cta-btn" data-component="CTA Button / Primary">Chat now</button>
+        </div>
+      </article>
+
+      <!-- ===== JOB CARD 2 — featured ===== -->
+      <article class="job-card" data-component="Job Card">
+        <div class="premium-row">
+          <span class="tag-outstanding" data-component="Tag / Outstanding">Featured</span>
+          <span class="tag-enticing" data-component="Tag / Enticing">Streamer guild</span>
+        </div>
+
+        <div class="job-card-top">
+          <div class="job-title">Hiring WFH! Part-time, evenings &amp; weekends</div>
+          <div class="job-salary" data-component="Salary / Text-active">$10–15K</div>
+        </div>
+
+        <div class="company-info" data-component="Job Card / Company Info">
+          Dream Culture Media · Unfunded · 20–99 employees
+        </div>
+
+        <div class="tag-row">
+          <span class="tag-attr" data-component="User attribute">Any experience</span>
+          <span class="tag-attr" data-component="User attribute">Any education</span>
+          <span class="tag-attr" data-component="User attribute">Singing</span>
+          <span class="tag-attr" data-component="User attribute">Streamer</span>
+          <span class="tag-attr" data-component="User attribute">Live streaming</span>
+        </div>
+
+        <div class="location" data-component="Job Card / Job Location">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <path d="M12 22s7-7.5 7-13a7 7 0 10-14 0c0 5.5 7 13 7 13z" stroke="var(--color-icon-normal)" stroke-width="1.6"/>
+            <circle cx="12" cy="9" r="2.5" stroke="var(--color-icon-normal)" stroke-width="1.6"/>
+          </svg>
+          Beijing · Haidian
+        </div>
+
+        <div class="recruiter-row">
+          <div class="recruiter">
+            <div class="avatar" data-component="Single Avatar">L</div>
+            <span class="recruiter-name">Ms. Liu · Operations Manager</span>
+          </div>
+          <button class="cta-btn" data-component="CTA Button / Primary">Chat now</button>
+        </div>
+      </article>
+
+      <!-- ===== JOB CARD 3 ===== -->
+      <article class="job-card" data-component="Job Card">
+        <div class="job-card-top">
+          <div class="job-title">AI software sales &amp; streamer mentor</div>
+          <div class="job-salary" data-component="Salary / Text-active">$20–45K/mo</div>
+        </div>
+
+        <div class="company-info" data-component="Job Card / Company Info">
+          Haomiao · 20–99 employees
+        </div>
+
+        <div class="tag-row">
+          <span class="tag-attr" data-component="User attribute">Any experience</span>
+          <span class="tag-attr" data-component="User attribute">Any education</span>
+          <span class="tag-attr" data-component="User attribute">Flexible hours</span>
+          <span class="tag-attr" data-component="User attribute">Live commerce</span>
+          <span class="tag-attr" data-component="User attribute">System provided</span>
+        </div>
+
+        <div class="location" data-component="Job Card / Job Location">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <path d="M12 22s7-7.5 7-13a7 7 0 10-14 0c0 5.5 7 13 7 13z" stroke="var(--color-icon-normal)" stroke-width="1.6"/>
+            <circle cx="12" cy="9" r="2.5" stroke="var(--color-icon-normal)" stroke-width="1.6"/>
+          </svg>
+          Beijing · Tongzhou · Guoyuan
+        </div>
+
+        <div class="recruiter-row">
+          <div class="recruiter">
+            <div class="avatar" data-component="Single Avatar">C</div>
+            <span class="recruiter-name">Ms. Chao · Co-founder</span>
+          </div>
+          <button class="cta-btn" data-component="CTA Button / Primary">Chat now</button>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Floating helpers -->
+    <div class="floating-btn floating-btn--more" data-component="Floating Button / More">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-icon-normal)">
+        <circle cx="6" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="18" cy="12" r="2"/>
+      </svg>
+    </div>
+    <div class="floating-btn floating-btn--panel" data-component="Floating Button / Side panel">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+        <path d="M9 6l6 6-6 6" stroke="var(--color-icon-normal)" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ============= STATES PANEL ============= -->
+  <h1 class="section-label">CTA Button — States</h1>
+  <div class="states-panel">
+    <h3>CTA Button states</h3>
+    <div class="state-row">
+      <span class="state-label">Default</span>
+      <button class="cta-btn">Chat now</button>
+    </div>
+    <div class="state-row">
+      <span class="state-label">Pressed</span>
+      <button class="cta-btn cta-btn--active">Chat now</button>
+    </div>
+    <div class="state-row">
+      <span class="state-label">Disabled</span>
+      <button class="cta-btn cta-btn--disabled" disabled>Chat now</button>
+    </div>
+  </div>
+
+  <h1 class="section-label">Tag Variants</h1>
+  <div class="states-panel">
+    <h3>Tag — semantic variants</h3>
+    <div class="state-row">
+      <span class="state-label">User attribute</span>
+      <span class="tag-attr">Any experience</span>
+      <span class="tag-attr">Bachelor's</span>
+    </div>
+    <div class="state-row">
+      <span class="state-label">Outstanding</span>
+      <span class="tag-outstanding">Featured</span>
+    </div>
+    <div class="state-row">
+      <span class="state-label">Enticing</span>
+      <span class="tag-enticing">Streamer guild</span>
+    </div>
+  </div>
+
+</body>
+</html>
