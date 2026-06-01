@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026 ID Candidate MOB — Search</title>
+  <style>
+    :root {
+      --color-bg-normal: #FFFFFF;
+      --color-bg-supplementary: #F7F9FA;
+      --color-bg-search-box: #E6F4FA;
+      --color-bg-input-active: #C3E8FF;
+      --color-bg-dark: #2D2D2D;
+      --color-text-normal: #666666;
+      --color-text-supplementary: #808080;
+      --color-text-active: #1A73E8;
+      --color-text-outstanding: #2D2D2D;
+      --color-icon-normal: #808080;
+      --color-icon-on-dark: #FFFFFF;
+      --color-border-normal: #DDDDDD;
+      --space-small-4: 4px;
+      --space-small-8: 8px;
+      --space-small-12: 12px;
+      --space-medium-16: 16px;
+      --space-medium-24: 24px;
+      --screen-width: 360px;
+      --screen-height: 640px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: start center;
+      padding: var(--space-medium-24);
+      background: var(--color-bg-supplementary);
+      font-family: Roboto, Arial, sans-serif;
+      color: var(--color-text-normal);
+    }
+
+    .preview {
+      display: grid;
+      gap: var(--space-small-12);
+    }
+
+    .preview-title {
+      margin: 0;
+      color: var(--color-text-normal);
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .screen {
+      width: var(--screen-width);
+      height: var(--screen-height);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background: var(--color-bg-normal);
+      color: var(--color-text-normal);
+      font-family: Roboto, Arial, sans-serif;
+    }
+
+    .status-bar {
+      height: 24px;
+      flex: 0 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: var(--space-small-4);
+      padding: 0 var(--space-medium-16);
+      background: var(--color-bg-normal);
+      color: var(--color-text-normal);
+    }
+
+    .status-icons {
+      display: flex;
+      align-items: center;
+      gap: var(--space-small-4);
+      color: var(--color-text-normal);
+    }
+
+    .status-time {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1;
+      color: var(--color-text-normal);
+    }
+
+    .signal {
+      width: 14px;
+      height: 12px;
+      background: currentColor;
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      transform: scaleX(1.2);
+    }
+
+    .cell {
+      width: 12px;
+      height: 12px;
+      display: grid;
+      grid-template-columns: repeat(3, 3px);
+      align-items: end;
+      gap: 1px;
+    }
+
+    .cell span {
+      display: block;
+      background: currentColor;
+    }
+
+    .cell span:nth-child(1) {
+      height: 4px;
+    }
+
+    .cell span:nth-child(2) {
+      height: 8px;
+    }
+
+    .cell span:nth-child(3) {
+      height: 12px;
+    }
+
+    .battery {
+      width: 16px;
+      height: 10px;
+      border: 1px solid currentColor;
+      position: relative;
+    }
+
+    .battery::before {
+      content: "";
+      position: absolute;
+      right: -3px;
+      top: 3px;
+      width: 2px;
+      height: 4px;
+      background: currentColor;
+    }
+
+    .battery::after {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      background: currentColor;
+    }
+
+    .search-header {
+      height: 56px;
+      flex: 0 0 56px;
+      display: flex;
+      align-items: center;
+      gap: var(--space-small-8);
+      padding: var(--space-small-8) var(--space-small-12) var(--space-small-8) var(--space-medium-16);
+      background: var(--color-bg-normal);
+    }
+
+    .icon-button {
+      width: 24px;
+      height: 40px;
+      padding: 0;
+      border: 0;
+      display: grid;
+      place-items: center;
+      background: var(--color-bg-normal);
+      color: var(--color-icon-normal);
+      cursor: pointer;
+    }
+
+    .icon {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+
+    .search-box {
+      height: 41px;
+      flex: 1 1 auto;
+      display: flex;
+      align-items: center;
+      gap: var(--space-small-8);
+      min-width: 0;
+      padding: 10px var(--space-medium-16);
+      border-radius: 4px;
+      background: var(--color-bg-search-box);
+      color: var(--color-text-supplementary);
+    }
+
+    .search-box.is-active {
+      background: var(--color-bg-input-active);
+    }
+
+    .search-box .icon {
+      width: 16px;
+      height: 16px;
+      color: var(--color-text-active);
+      flex: 0 0 16px;
+    }
+
+    .search-input {
+      width: 100%;
+      min-width: 0;
+      padding: 0;
+      border: 0;
+      outline: 0;
+      background: inherit;
+      color: var(--color-text-outstanding);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.5;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .search-input::placeholder {
+      color: var(--color-text-supplementary);
+    }
+
+    .search-input::-webkit-search-cancel-button {
+      appearance: none;
+      display: none;
+    }
+
+    .search-input::-webkit-search-decoration {
+      appearance: none;
+    }
+
+    .clear-search {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 18px;
+      border: 0;
+      padding: 0;
+      display: grid;
+      place-items: center;
+      background: inherit;
+      color: var(--color-icon-normal);
+      cursor: pointer;
+    }
+
+    .clear-search .icon {
+      width: 16px;
+      height: 16px;
+    }
+
+    .is-hidden {
+      display: none;
+    }
+
+    .content {
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow-y: auto;
+      background: var(--color-bg-normal);
+      scrollbar-width: none;
+    }
+
+    .content::-webkit-scrollbar {
+      display: none;
+    }
+
+    .search-section {
+      background: var(--color-bg-normal);
+    }
+
+    .search-list-title {
+      width: var(--screen-width);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-small-8);
+      padding: var(--space-small-8) var(--space-medium-16);
+      background: var(--color-bg-normal);
+      color: var(--color-text-outstanding);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .title-action {
+      border: 0;
+      padding: 0;
+      background: var(--color-bg-normal);
+      color: var(--color-text-active);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.5;
+      cursor: pointer;
+    }
+
+    .search-list-title p,
+    .search-list-item p,
+    .suggestion-text,
+    .suggestion-type {
+      margin: 0;
+    }
+
+    .search-list-item {
+      width: var(--screen-width);
+      min-height: 37px;
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-small-12);
+      padding: var(--space-small-8) var(--space-medium-16);
+      border: 0;
+      background: var(--color-bg-normal);
+      color: var(--color-text-outstanding);
+      cursor: pointer;
+      text-align: left;
+      font: inherit;
+    }
+
+    .search-list-item:focus-visible {
+      outline: 2px solid var(--color-text-active);
+      outline-offset: -2px;
+    }
+
+    .search-list-item .icon {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      color: var(--color-text-outstanding);
+      flex: 0 0 18px;
+    }
+
+    .search-list-item p {
+      color: var(--color-text-outstanding);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    .autocomplete-list {
+      background: var(--color-bg-normal);
+    }
+
+    .autocomplete-row {
+      width: var(--screen-width);
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      gap: var(--space-small-12);
+      padding: var(--space-small-12) var(--space-medium-16);
+      border: 0;
+      background: var(--color-bg-normal);
+      color: var(--color-text-outstanding);
+      cursor: pointer;
+      text-align: left;
+      font: inherit;
+    }
+
+    .autocomplete-row:focus-visible {
+      outline: 2px solid var(--color-text-active);
+      outline-offset: -2px;
+    }
+
+    .autocomplete-row .icon {
+      width: 18px;
+      height: 18px;
+      color: var(--color-icon-normal);
+      flex: 0 0 18px;
+    }
+
+    .suggestion-copy {
+      min-width: 0;
+      display: flex;
+      flex: 1 1 auto;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-medium-16);
+    }
+
+    .suggestion-text {
+      min-width: 0;
+      flex: 1 1 auto;
+      color: var(--color-text-outstanding);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    .suggestion-text strong {
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .suggestion-type {
+      min-width: 58px;
+      flex: 0 0 auto;
+      color: var(--color-text-supplementary);
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.4;
+      text-align: right;
+    }
+
+    .chip-panel {
+      width: var(--screen-width);
+      padding: 0 var(--space-medium-16) var(--space-small-8);
+      background: var(--color-bg-normal);
+    }
+
+    .chip-row,
+    .chip-grid {
+      display: flex;
+      gap: var(--space-small-8);
+    }
+
+    .chip-row {
+      overflow: hidden;
+    }
+
+    .chip-grid {
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      min-height: 29px;
+      max-width: 100%;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-small-4);
+      padding: var(--space-small-4) var(--space-small-8);
+      border: 1px solid var(--color-border-normal);
+      border-radius: 8px;
+      background: var(--color-bg-normal);
+      color: var(--color-text-outstanding);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.5;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .system-nav {
+      height: 48px;
+      flex: 0 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      background: var(--color-bg-dark);
+      color: var(--color-icon-on-dark);
+    }
+
+    .system-nav svg {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <main class="preview">
+    <h1 class="preview-title">2026 ID Candidate MOB · Search</h1>
+    <section class="screen" aria-label="Search screen">
+      <div class="status-bar" data-component="Android Status Bar">
+        <div class="status-icons" aria-hidden="true">
+          <span class="signal"></span>
+          <span class="cell"><span></span><span></span><span></span></span>
+          <span class="battery"></span>
+        </div>
+        <span class="status-time">12:30</span>
+      </div>
+
+      <header class="search-header" data-component="Search header">
+        <button class="icon-button" type="button" aria-label="Back" data-component="Icon/arrow-left">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15 19L8 12L15 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </button>
+        <div class="search-box" role="search" data-component="Search Box">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" data-component="Icon/search">
+            <circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2"></circle>
+            <path d="M16 16L20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+          <input class="search-input" id="search-input" type="search" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Search by Title, Skill and Company" aria-label="Search by Title, Skill and Company">
+          <button class="clear-search is-hidden" type="button" id="clear-search" aria-label="Clear search" data-component="Icon/close-circle">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
+              <path d="M9 9L15 15M15 9L9 15" fill="none" stroke="var(--color-bg-normal)" stroke-width="2" stroke-linecap="round"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <div class="content" id="default-content">
+        <section class="search-section" aria-labelledby="recent-searches">
+          <div class="search-list-title" id="recent-searches" data-component="search-list-title">
+            <p>Recent searches</p>
+            <button class="title-action" type="button">Clear</button>
+          </div>
+          <button class="search-list-item" type="button" data-component="search-list-item" data-restored-filters="Jakarta, Remote, Full-time">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" data-component="Icon/search">
+              <circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2"></circle>
+              <path d="M16 16L20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            </svg>
+            <p>Marketing Analyst</p>
+          </button>
+          <button class="search-list-item" type="button" data-component="search-list-item" data-restored-filters="No experience, IDR 5M+">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" data-component="Icon/search">
+              <circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2"></circle>
+              <path d="M16 16L20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            </svg>
+            <p>Business Development</p>
+          </button>
+        </section>
+
+        <section class="search-section" aria-labelledby="related-searches">
+          <div class="search-list-title" id="related-searches" data-component="search-list-title">
+            <p>Try searching for</p>
+          </div>
+          <div class="chip-panel" data-component="Filter Section">
+            <div class="chip-grid">
+              <button class="chip" type="button" data-component="Chip">Sales</button>
+              <button class="chip" type="button" data-component="Chip">Sales Assistant</button>
+              <button class="chip" type="button" data-component="Chip">Sales Operations</button>
+              <button class="chip" type="button" data-component="Chip">Business Development</button>
+              <button class="chip" type="button" data-component="Chip">Account Sales Manager</button>
+              <button class="chip" type="button" data-component="Chip">Customer Service Sales</button>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="content is-hidden" id="autocomplete-content" aria-live="polite">
+        <section class="autocomplete-list" id="autocomplete-list" aria-label="Autocomplete suggestions"></section>
+      </div>
+
+      <nav class="system-nav" aria-label="Android system navigation" data-component="Android System Navigation">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 12L18 5V19L6 12Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+        </svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="7" fill="none" stroke="currentColor" stroke-width="2"></circle>
+        </svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="6" y="6" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"></rect>
+        </svg>
+      </nav>
+    </section>
+  </main>
+  <script>
+    const searchBox = document.querySelector(".search-box");
+    const searchInput = document.getElementById("search-input");
+    const clearSearch = document.getElementById("clear-search");
+    const defaultContent = document.getElementById("default-content");
+    const autocompleteContent = document.getElementById("autocomplete-content");
+    const autocompleteList = document.getElementById("autocomplete-list");
+
+    const suggestionSets = {
+      java: [
+        { label: "Java Developer", type: "Position", icon: "search" },
+        { label: "Senior Java Engineer", type: "Position", icon: "search" },
+        { label: "Java", type: "Skill", icon: "hashtag" },
+        { label: "Java Spring Boot", type: "Skill", icon: "hashtag" },
+        { label: "JavaScript", type: "Skill", icon: "hashtag" },
+        { label: "PT Java Teknologi Indonesia", type: "Company", icon: "building" }
+      ],
+      sales: [
+        { label: "Sales Assistant", type: "Position", icon: "search" },
+        { label: "Account Sales Manager", type: "Position", icon: "search" },
+        { label: "Sales", type: "Skill", icon: "hashtag" },
+        { label: "Sales Operations", type: "Skill", icon: "hashtag" },
+        { label: "Glints Sales Indonesia", type: "Company", icon: "building" }
+      ],
+      company: [
+        { label: "Company A", type: "Company", icon: "building" },
+        { label: "PT. Company B", type: "Company", icon: "building" },
+        { label: "Company Relations Officer", type: "Position", icon: "search" },
+        { label: "Company Research", type: "Skill", icon: "hashtag" }
+      ]
+    };
+
+    function getIcon(name) {
+      if (name === "building") {
+        return `
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" data-component="Icon/building">
+            <path d="M5 20V5H14V20M14 9H19V20M8 8H11M8 12H11M8 16H11M16 12H17.5M16 16H17.5M3 20H21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        `;
+      }
+
+      if (name === "hashtag") {
+        return `
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" data-component="Icon/hashtag">
+            <path d="M9 4L7 20M17 4L15 20M4 9H20M3 15H19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+        `;
+      }
+
+      return `
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" data-component="Icon/search">
+          <circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2"></circle>
+          <path d="M16 16L20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+      `;
+    }
+
+    function escapeHtml(value) {
+      return value.replace(/[&<>"']/g, (character) => {
+        const entities = {
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&apos;"
+        };
+        return entities[character];
+      });
+    }
+
+    function highlightMatch(label, query) {
+      const escapedLabel = escapeHtml(label);
+      const index = label.toLowerCase().indexOf(query.toLowerCase());
+
+      if (index === -1) {
+        return escapedLabel;
+      }
+
+      const before = escapeHtml(label.slice(0, index));
+      const match = escapeHtml(label.slice(index, index + query.length));
+      const after = escapeHtml(label.slice(index + query.length));
+
+      return `${before}<strong>${match}</strong>${after}`;
+    }
+
+    function getSuggestions(query) {
+      const normalized = query.trim().toLowerCase();
+
+      if (!normalized) {
+        return [];
+      }
+
+      if (normalized.startsWith("java")) {
+        return suggestionSets.java;
+      }
+
+      if (normalized.startsWith("sale")) {
+        return suggestionSets.sales;
+      }
+
+      if (normalized.startsWith("comp")) {
+        return suggestionSets.company;
+      }
+
+      return [
+        { label: `${query} Specialist`, type: "Position", icon: "search" },
+        { label: query, type: "Skill", icon: "hashtag" },
+        { label: `${query} Indonesia`, type: "Company", icon: "building" }
+      ];
+    }
+
+    function renderAutocomplete() {
+      const query = searchInput.value.trim();
+      const hasQuery = query.length > 0;
+
+      searchBox.classList.toggle("is-active", hasQuery);
+      clearSearch.classList.toggle("is-hidden", !hasQuery);
+      defaultContent.classList.toggle("is-hidden", hasQuery);
+      autocompleteContent.classList.toggle("is-hidden", !hasQuery);
+
+      if (!hasQuery) {
+        autocompleteList.innerHTML = "";
+        return;
+      }
+
+      const suggestions = getSuggestions(query);
+
+      autocompleteList.innerHTML = suggestions.map((suggestion) => `
+        <button class="autocomplete-row" type="button" data-component="search-list-item" data-keyword-type="${escapeHtml(suggestion.type)}">
+          ${getIcon(suggestion.icon)}
+          <span class="suggestion-copy">
+            <span class="suggestion-text">${highlightMatch(suggestion.label, query)}</span>
+            <span class="suggestion-type">${escapeHtml(suggestion.type)}</span>
+          </span>
+        </button>
+      `).join("");
+    }
+
+    searchInput.addEventListener("input", renderAutocomplete);
+
+    clearSearch.addEventListener("click", () => {
+      searchInput.value = "";
+      searchInput.focus();
+      renderAutocomplete();
+    });
+
+    document.querySelectorAll("[data-component='Chip'], [data-component='search-list-item']").forEach((item) => {
+      item.addEventListener("click", () => {
+        const text = item.textContent.trim();
+        if (!text) {
+          return;
+        }
+
+        searchInput.value = text;
+        searchInput.focus();
+        renderAutocomplete();
+      });
+    });
+
+    autocompleteList.addEventListener("click", (event) => {
+      const row = event.target.closest(".autocomplete-row");
+      if (!row) {
+        return;
+      }
+
+      const suggestion = row.querySelector(".suggestion-text");
+      if (!suggestion) {
+        return;
+      }
+
+      searchInput.value = suggestion.textContent.trim();
+      searchInput.focus();
+      renderAutocomplete();
+    });
+  </script>
+</body>
+</html>

@@ -53,6 +53,7 @@ A faithful Aries rendering that diverges visually from a non-Aries source is a *
 - **Tokens:** [tokens/background.md](./tokens/background.md), [tokens/text.md](./tokens/text.md), [tokens/border.md](./tokens/border.md)
 - **Typography:** Aries text styles (Android / iOS) — see Figma "Text styles" in the right panel
 - **Icons:** [icons.md](./icons.md)
+- **Product psychology:** [learnings/product-psychology-skill.md](./learnings/product-psychology-skill.md) — use for UI decisions, search/suggestion logic, defaults, nudges, and reducing cognitive load
 - **MCP workflow:** [figma-integration.md](./figma-integration.md)
 
 ### Rules of substitution (in priority order)
@@ -95,7 +96,8 @@ Before drawing anything:
 2. Extract a concrete list of **screens**, **flows**, and **states** the design must cover (empty / loading / error / success / disabled).
 3. List every **piece of content** required (titles, body copy, CTAs, microcopy, error messages).
 4. List every **interaction** (taps, navigations, form submissions, dismissals).
-5. Resolve ambiguities by asking — do **not** fill gaps with assumed copy or behavior.
+5. Identify the key **user decision** on each screen and apply [`learnings/product-psychology-skill.md`](./learnings/product-psychology-skill.md): reduce choices, prefer recognition over recall, delay complexity, make defaults reversible, and keep every visible section distinct.
+6. Resolve ambiguities by asking — do **not** fill gaps with assumed copy or behavior.
 
 > If the input is a screenshot, also capture the screen's **section ordering** and **visual hierarchy** at this stage so the audit step has a baseline.
 
@@ -110,7 +112,12 @@ For each intent from Step 1:
 3. Pick the correct semantic tokens (background / text / border) — pair them per the .md "Color Pairing" tables.
 4. Pick the correct typography tier (heading / body / caption) per Aries Text styles.
 5. Note any required Backdrop, Header, or wrapper component (e.g. Bottom Sheet always needs Backdrop).
-6. Flag anything that has **no Aries equivalent** — escalate before improvising.
+6. Map product-psychology decisions to UI behavior before styling:
+   - default state vs. typing / active state
+   - autocomplete vs. recent history vs. discovery suggestions
+   - keyword suggestions vs. filter values
+   - recognition cues such as entity labels (`Position`, `Skill`, `Company`)
+7. Flag anything that has **no Aries equivalent** — escalate before improvising.
 
 ---
 
@@ -195,6 +202,18 @@ Source ref:    <path or PRD section>
 ```
 
 Only after this audit shows zero ❌ and zero unresolved 🟡 should the design be pushed to Figma via the MCP write tools.
+
+### Product-psychology audit
+
+Also check the design against [`learnings/product-psychology-skill.md`](./learnings/product-psychology-skill.md):
+
+- Does every visible section have a distinct job?
+- Can the user recognize good options without remembering exact terms?
+- Are filters visually separate from keyword suggestions?
+- Are defaults helpful and reversible?
+- Is the strongest suggestion first?
+- Is the screen using fewer choices than before?
+- Does every action provide feedback or a clear next state?
 
 ---
 

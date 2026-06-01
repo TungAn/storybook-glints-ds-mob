@@ -11,6 +11,7 @@ Reference documentation for the Glints Aries App UI Kit 2.0. Load files based on
 - [`figma-integration.md`](./figma-integration.md) — MCP workflow, scoped search, token mapping
 - [`design-generation.md`](./design-generation.md) — rules for generating designs from PRD / wireframe / mockup / screenshot, HTML-preview-first workflow, audit checklist, Figma-push confirmation gate
 - [`learnings/README.md`](./learnings/README.md) — continuous-learning index. Skim the topic files relevant to your task before starting; append new learnings when something surprises you
+- [`learnings/product-psychology-skill.md`](./learnings/product-psychology-skill.md) — applied psychology guidance for UI decisions, search/suggestion logic, defaults, nudges, and reducing cognitive load
 
 ---
 
@@ -107,6 +108,7 @@ Reference documentation for the Glints Aries App UI Kit 2.0. Load files based on
 | Spacing / padding scale (4-point grid) | [`spacing.md`](./spacing.md) |
 | Typography scale (family, size, weight, line-height) | [`typography.md`](./typography.md) |
 | Copy / voice & tone (capitalization, punctuation, emoji) | [`voice-and-tone.md`](./voice-and-tone.md) |
+| Product logic, search suggestions, UI decision-making, nudges | [`learnings/product-psychology-skill.md`](./learnings/product-psychology-skill.md) |
 
 ---
 
@@ -120,4 +122,5 @@ Reference documentation for the Glints Aries App UI Kit 2.0. Load files based on
 6. Sub-components (e.g. `Bottom Sheet/Header`, `Stepper/Indicator`) only go inside their parent — never standalone.
 7. Follow the MCP flow in `figma-integration.md` for every implementation task.
 8. For design generation (PRD / wireframe / mockup / screenshot → new design), follow `design-generation.md`: HTML preview first, audit against the input, **ask the user before pushing to Figma**, then push.
-9. After any non-trivial run, append to `learnings/` if something surprised you — see `learnings/README.md` for the format and promotion path.
+9. For UI decisions, product logic, search suggestions, defaults, and nudges, apply [`learnings/product-psychology-skill.md`](./learnings/product-psychology-skill.md) before choosing the layout or interaction pattern.
+10. After any non-trivial run, append to `learnings/` if something surprised you — see `learnings/README.md` for the format and promotion path.

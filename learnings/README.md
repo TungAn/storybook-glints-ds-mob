@@ -16,6 +16,7 @@ Topics:
 | [`audit.md`](./audit.md) | Audit-step misses, false-positive completions, screenshot-vs-PRD comparison tricks |
 | [`design-generation.md`](./design-generation.md) | HTML-preview pipeline, state coverage, copy / data realism |
 | [`docs-hygiene.md`](./docs-hygiene.md) | Keeping `.md` docs consistent — internal contradictions, stale "not found" claims, etc. |
+| [`product-psychology-skill.md`](./product-psychology-skill.md) | Applied psychology patterns for product logic, search suggestions, decision structure, and ethical nudges |
 
 ## Entry format
 
