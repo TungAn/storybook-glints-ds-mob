@@ -1,0 +1,53 @@
+:root {
+  --aries-background-normal: #ffffff;
+  --aries-background-supplementary: #f7f9fa;
+  --aries-background-supplementary2: #f3f3f3;
+  --aries-background-primary-muted: #e6f4fa;
+  --aries-background-action01: #1a73e8;
+  --aries-background-action01-active: #58bfff;
+  --aries-background-action02: #ffffff;
+  --aries-background-action02-active: #e6f4fa;
+  --aries-background-action-disabled: #f3f3f3;
+  --aries-background-success-muted: #deebc8;
+  --aries-background-success-bright: #93bd49;
+  --aries-background-danger-muted: #ffeeee;
+  --aries-background-danger-bright: #d42327;
+  --aries-background-cautious: #f5a623;
+  --aries-background-discount-muted: #ffeebe;
+  --aries-background-enticing-muted: #fce9c8;
+  --aries-background-outstanding: #c3e8ff;
+  --aries-overlay-normal: #666666;
+
+  --aries-text-normal: #666666;
+  --aries-text-normal-on-dark: #ffffff;
+  --aries-text-supplementary: #808080;
+  --aries-text-active: #1a73e8;
+  --aries-text-success: #76973a;
+  --aries-text-danger: #d42327;
+  --aries-text-cautious: #f5a623;
+  --aries-text-discount: #ffd96a;
+  --aries-text-enticing: #ec7200;
+  --aries-text-outstanding: #2d2d2d;
+
+  --aries-icon-normal: #808080;
+  --aries-icon-on-dark: #ffffff;
+  --aries-icon-disabled: #dddddd;
+  --aries-icon-active: #1a73e8;
+  --aries-icon-success: #93bd49;
+  --aries-icon-danger: #d42327;
+  --aries-icon-cautious: #f5a623;
+  --aries-icon-enticing: #ec7200;
+
+  --aries-border-normal: #dddddd;
+  --aries-border-active: #1a73e8;
+  --aries-border-action: #1a73e8;
+  --aries-border-action-active: #58bfff;
+  --aries-border-action-disabled: #dddddd;
+  --aries-border-input-select: #666666;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--aries-text-normal);
+}

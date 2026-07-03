@@ -1,0 +1,24 @@
+{
+  "name": "glints-ds",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "storybook": "npm run build-storybook && node scripts/serve-storybook-static.mjs",
+    "build-storybook": "HOME=.storybook-home STORYBOOK_DISABLE_TELEMETRY=1 storybook build",
+    "build": "tsc --noEmit"
+  },
+  "dependencies": {
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "@storybook/react-vite": "^8.6.18",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.1",
+    "storybook": "^8.6.18",
+    "typescript": "latest",
+    "vite": "^6.4.3"
+  }
+}

@@ -1,0 +1,79 @@
+.aries-tag {
+  align-items: center;
+  background: var(--tag-background, var(--aries-background-supplementary));
+  border-radius: 4px;
+  color: var(--tag-color, var(--aries-text-normal));
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 400;
+  gap: 4px;
+  line-height: 1.5;
+  min-height: 22px;
+  padding: 2px 8px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.aries-tag[data-rounded='true'] {
+  border-radius: 32px;
+}
+
+.aries-tag__icon {
+  flex: 0 0 auto;
+  height: 16px;
+  width: 16px;
+}
+
+.aries-tag__label {
+  display: inline-block;
+}
+
+.aries-tag[data-color='grey'][data-type='muted'] {
+  --tag-background: var(--aries-background-supplementary);
+  --tag-color: var(--aries-text-normal);
+}
+
+.aries-tag[data-color='blue'][data-type='muted'] {
+  --tag-background: var(--aries-background-primary-muted);
+  --tag-color: var(--aries-text-active);
+}
+
+.aries-tag[data-color='blue'][data-type='bright'] {
+  --tag-background: var(--aries-background-action01);
+  --tag-color: var(--aries-text-normal-on-dark);
+}
+
+.aries-tag[data-color='green'][data-type='muted'] {
+  --tag-background: var(--aries-background-success-muted);
+  --tag-color: var(--aries-text-success);
+}
+
+.aries-tag[data-color='green'][data-type='bright'] {
+  --tag-background: var(--aries-background-success-bright);
+  --tag-color: var(--aries-text-normal-on-dark);
+}
+
+.aries-tag[data-color='red'][data-type='muted'] {
+  --tag-background: var(--aries-background-danger-muted);
+  --tag-color: var(--aries-text-danger);
+}
+
+.aries-tag[data-color='red'][data-type='bright'] {
+  --tag-background: var(--aries-background-danger-bright);
+  --tag-color: var(--aries-text-normal-on-dark);
+}
+
+.aries-tag[data-color='yellow'][data-type='muted'] {
+  --tag-background: var(--aries-background-discount-muted);
+  --tag-color: var(--aries-text-outstanding);
+}
+
+.aries-tag[data-color='orange'][data-type='muted'] {
+  --tag-background: var(--aries-background-enticing-muted);
+  --tag-color: var(--aries-text-enticing);
+}
+
+.aries-tag[data-color='outstanding'][data-type='muted'] {
+  --tag-background: var(--aries-background-outstanding);
+  --tag-color: var(--aries-text-outstanding);
+}

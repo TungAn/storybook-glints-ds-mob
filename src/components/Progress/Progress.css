@@ -1,0 +1,48 @@
+.aries-progress-bar {
+  background: var(--aries-background-supplementary2);
+  border-radius: 999px;
+  height: 6px;
+  overflow: hidden;
+  width: 360px;
+}
+
+.aries-progress-bar span {
+  background: var(--aries-background-action01);
+  border-radius: inherit;
+  display: block;
+  height: 100%;
+}
+
+.aries-stepper {
+  display: flex;
+  gap: 8px;
+  width: 360px;
+}
+
+.aries-stepper span {
+  background: var(--aries-background-supplementary2);
+  border-radius: 999px;
+  flex: 1 1 0;
+  height: 6px;
+}
+
+.aries-stepper span[data-active='true'] {
+  background: var(--aries-background-action01);
+}
+
+.aries-indicator {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.aries-indicator span {
+  background: var(--aries-background-supplementary2);
+  border-radius: 999px;
+  height: 6px;
+  width: 6px;
+}
+
+.aries-indicator span[data-active='true'] {
+  background: var(--aries-background-action01);
+  width: 18px;
+}

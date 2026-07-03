@@ -1,0 +1,47 @@
+.aries-avatar {
+  align-items: center;
+  background: var(--aries-background-primary-muted);
+  color: var(--aries-text-active);
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-size: calc(var(--avatar-size) * 0.4);
+  font-weight: 700;
+  height: var(--avatar-size);
+  justify-content: center;
+  overflow: hidden;
+  width: var(--avatar-size);
+}
+
+.aries-avatar,
+.aries-avatar img {
+  border-radius: 50%;
+}
+
+.aries-avatar[data-border='true'] {
+  box-shadow: 0 0 0 1px var(--aries-background-normal), 0 0 0 2px var(--aries-border-normal);
+}
+
+.aries-avatar img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.aries-avatar-stack {
+  display: inline-flex;
+  padding-left: 2px;
+}
+
+.aries-avatar-stack .aries-avatar {
+  margin-left: -6px;
+}
+
+.aries-avatar-stack .aries-avatar:first-child {
+  margin-left: 0;
+}
+
+.aries-avatar--extra {
+  background: var(--aries-background-supplementary2);
+  color: var(--aries-text-normal);
+}

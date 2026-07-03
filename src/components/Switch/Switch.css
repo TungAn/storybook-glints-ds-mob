@@ -1,0 +1,55 @@
+.aries-switch {
+  align-items: center;
+  color: var(--aries-text-outstanding);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 14px;
+  gap: 8px;
+  line-height: 1.4;
+}
+
+.aries-switch[data-disabled='true'] {
+  color: var(--aries-text-supplementary);
+  cursor: not-allowed;
+}
+
+.aries-switch input {
+  height: 1px;
+  opacity: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.aries-switch__control {
+  background: var(--aries-border-normal);
+  border-radius: 999px;
+  box-sizing: border-box;
+  display: inline-flex;
+  height: 24px;
+  padding: 2px;
+  transition: background 0.16s ease;
+  width: 44px;
+}
+
+.aries-switch__control span {
+  background: var(--aries-background-normal);
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+  display: block;
+  height: 20px;
+  transform: translateX(0);
+  transition: transform 0.16s ease;
+  width: 20px;
+}
+
+.aries-switch__control[data-checked='true'] {
+  background: var(--aries-background-action01);
+}
+
+.aries-switch__control[data-checked='true'] span {
+  transform: translateX(20px);
+}
+
+.aries-switch__control[data-disabled='true'] {
+  background: var(--aries-background-action-disabled);
+}

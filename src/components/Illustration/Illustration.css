@@ -1,0 +1,35 @@
+.aries-illustration {
+  align-items: center;
+  background: var(--aries-background-primary-muted);
+  border: 1px solid var(--aries-border-normal);
+  color: var(--aries-icon-active);
+  display: inline-flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 120px;
+  justify-content: center;
+  padding: 12px;
+  width: 160px;
+}
+
+.aries-illustration span {
+  color: var(--aries-text-normal);
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.aries-illustration[data-kind='glints-logo-fill'] {
+  background: var(--aries-background-action01);
+  color: var(--aries-icon-on-dark);
+}
+
+.aries-illustration[data-kind='google'] {
+  background: var(--aries-background-normal);
+  color: var(--aries-icon-normal);
+}
+
+.aries-illustration[data-kind='movie'] {
+  background: var(--aries-background-enticing-muted);
+  color: var(--aries-icon-enticing);
+}

@@ -1,0 +1,9 @@
+.aries-backdrop {
+  background: var(--aries-overlay-normal);
+  border: 0;
+  cursor: pointer;
+  display: block;
+  opacity: var(--backdrop-opacity);
+  padding: 0;
+  width: 360px;
+}

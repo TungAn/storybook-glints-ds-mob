@@ -1,0 +1,46 @@
+@keyframes aries-loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.aries-loader {
+  align-items: center;
+  color: var(--aries-icon-normal);
+  display: inline-flex;
+}
+
+.aries-loader--inline {
+  color: var(--aries-text-normal);
+  gap: 8px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.aries-loader__spinner {
+  animation: aries-loader-spin 0.8s linear infinite;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  box-sizing: border-box;
+  display: inline-block;
+  height: var(--loader-size);
+  width: var(--loader-size);
+}
+
+.aries-loader__spinner[data-type='fill'] {
+  border-width: calc(var(--loader-size) / 6);
+}
+
+.aries-full-page-loading {
+  align-items: center;
+  background: var(--aries-background-normal);
+  color: var(--aries-text-normal);
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  gap: 12px;
+  height: 360px;
+  justify-content: center;
+  width: 360px;
+}
