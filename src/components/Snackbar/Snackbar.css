@@ -1,0 +1,40 @@
+.aries-snackbar {
+  align-items: center;
+  background: var(--snackbar-background);
+  border-radius: 8px;
+  box-shadow: var(--aries-effect-shadow-elevated-4);
+  box-sizing: border-box;
+  color: var(--snackbar-icon);
+  display: flex;
+  gap: var(--aries-space-small-12);
+  min-height: 56px;
+  padding: var(--aries-space-medium-16);
+  width: 344px;
+}
+
+.aries-snackbar > span {
+  color: var(--aries-text-outstanding);
+  flex: 1 1 auto;
+  font-size: var(--aries-typography-android-body1-size);
+  line-height: var(--aries-typography-android-body1-line-height);
+}
+
+.aries-snackbar[data-status='informative'] {
+  --snackbar-background: var(--aries-background-primary-muted);
+  --snackbar-icon: var(--aries-icon-active);
+}
+
+.aries-snackbar[data-status='success'] {
+  --snackbar-background: var(--aries-background-success-muted);
+  --snackbar-icon: var(--aries-icon-success);
+}
+
+.aries-snackbar[data-status='warning'] {
+  --snackbar-background: var(--aries-background-enticing-muted);
+  --snackbar-icon: var(--aries-icon-cautious);
+}
+
+.aries-snackbar[data-status='danger'] {
+  --snackbar-background: var(--aries-background-danger-muted);
+  --snackbar-icon: var(--aries-icon-danger);
+}

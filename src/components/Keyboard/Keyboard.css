@@ -1,0 +1,68 @@
+.aries-keyboard {
+  background: var(--aries-system-keyboard-background);
+  box-sizing: border-box;
+  display: grid;
+  gap: var(--aries-space-small-8);
+  padding: var(--aries-space-small-8);
+  width: 390px;
+}
+
+.aries-keyboard[data-dark='true'] {
+  background: var(--aries-system-keyboard-background-dark);
+}
+
+.aries-keyboard__predictive {
+  display: grid;
+  gap: var(--aries-space-small-8);
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.aries-keyboard__predictive span {
+  color: var(--aries-text-outstanding);
+  font-size: 13px;
+  line-height: 32px;
+  text-align: center;
+}
+
+.aries-keyboard[data-dark='true'] .aries-keyboard__predictive span {
+  color: var(--aries-text-normal-on-dark);
+}
+
+.aries-keyboard__numeric {
+  display: grid;
+  gap: var(--aries-space-small-8);
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.aries-keyboard button {
+  background: var(--aries-system-keyboard-key-background);
+  border: 0;
+  border-radius: 6px;
+  box-shadow: 0 1px 0 var(--aries-system-keyboard-shadow);
+  color: var(--aries-system-keyboard-key-text);
+  cursor: pointer;
+  font: inherit;
+  font-size: 22px;
+  height: 48px;
+}
+
+.aries-keyboard[data-dark='true'] button {
+  background: var(--aries-system-keyboard-key-background-dark);
+  color: var(--aries-text-normal-on-dark);
+}
+
+.aries-keyboard__qwerty {
+  display: grid;
+  gap: var(--aries-space-small-8);
+}
+
+.aries-keyboard__qwerty div {
+  display: flex;
+  gap: var(--aries-space-small-8);
+  justify-content: center;
+}
+
+.aries-keyboard__qwerty button {
+  flex: 0 1 32px;
+  font-size: var(--aries-typography-android-subtitle1-size);
+}

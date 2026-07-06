@@ -1,0 +1,55 @@
+.aries-chip {
+  align-items: center;
+  background: var(--aries-background-normal);
+  border: 1px solid var(--aries-border-normal);
+  border-radius: 8px;
+  color: var(--aries-text-outstanding);
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-size: var(--aries-typography-android-body1-size);
+  gap: var(--aries-space-small-4);
+  line-height: var(--aries-typography-android-body1-line-height);
+  min-height: 33px;
+  padding: var(--aries-space-small-8) var(--aries-space-small-12);
+  white-space: nowrap;
+}
+
+.aries-chip:hover,
+.aries-chip:focus-visible,
+.aries-chip[data-focused='true'] {
+  background: var(--aries-background-action02-active);
+  border-color: var(--aries-border-outstanding);
+  outline: none;
+}
+
+.aries-chip[data-small='true'] {
+  font-size: var(--aries-typography-android-subtitle2-size);
+  min-height: 28px;
+  padding: var(--aries-space-small-4) var(--aries-space-small-12);
+}
+
+.aries-chip[data-selected='true'] {
+  background: var(--aries-background-input-select-select01);
+  border-color: var(--aries-border-input-select-selected);
+  color: var(--aries-text-active);
+}
+
+.aries-chip:disabled {
+  background: var(--aries-background-action-disabled);
+  border-color: var(--aries-border-action-disabled);
+  color: var(--aries-text-supplementary);
+  cursor: not-allowed;
+}
+
+.aries-chip:disabled:hover,
+.aries-chip:disabled:focus-visible {
+  background: var(--aries-background-action-disabled);
+  border-color: var(--aries-border-action-disabled);
+}
+
+.aries-chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--aries-space-small-8);
+}

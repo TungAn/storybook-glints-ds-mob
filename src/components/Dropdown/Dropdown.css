@@ -1,0 +1,74 @@
+.aries-dropdown {
+  color: var(--aries-text-normal);
+  display: grid;
+  gap: var(--aries-space-small-4);
+  width: 360px;
+}
+
+.aries-dropdown__label {
+  font-size: var(--aries-typography-android-overline-size);
+  font-weight: var(--aries-font-weight-medium);
+  line-height: var(--aries-typography-android-body2-line-height);
+}
+
+.aries-dropdown__box {
+  align-items: center;
+  background: var(--dropdown-background, var(--aries-background-normal));
+  border: 1px solid var(--dropdown-border, var(--aries-border-input-select));
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: var(--aries-icon-normal);
+  cursor: pointer;
+  display: flex;
+  font: inherit;
+  gap: var(--aries-space-small-8);
+  height: 48px;
+  padding: var(--aries-space-small-12);
+  text-align: left;
+  width: 100%;
+}
+
+.aries-dropdown__box span {
+  color: var(--aries-text-supplementary);
+  flex: 1 1 auto;
+  font-size: var(--aries-typography-android-body1-size);
+  line-height: var(--aries-typography-android-body1-line-height);
+}
+
+.aries-dropdown__box span[data-populated='true'] {
+  color: var(--aries-text-normal);
+}
+
+.aries-dropdown small {
+  color: var(--aries-text-normal);
+  font-size: var(--aries-typography-android-subtitle2-size);
+  line-height: var(--aries-typography-android-body1-line-height);
+}
+
+.aries-dropdown[data-state='selected'] {
+  --dropdown-border: var(--aries-border-input-select-selected);
+}
+
+.aries-dropdown[data-state='active'],
+.aries-dropdown[data-state='pressed'] {
+  --dropdown-background: var(--aries-background-input-select-active);
+  --dropdown-border: var(--aries-border-input-box-active);
+}
+
+.aries-dropdown[data-state='disabled'] {
+  --dropdown-background: var(--aries-background-input-box-disabled);
+  --dropdown-border: var(--aries-border-input-box-disabled);
+}
+
+.aries-dropdown[data-state='disabled'] .aries-dropdown__box {
+  cursor: not-allowed;
+}
+
+.aries-dropdown[data-state='error'] {
+  --dropdown-background: var(--aries-background-danger-muted);
+  --dropdown-border: var(--aries-border-danger);
+}
+
+.aries-dropdown[data-state='error'] small {
+  color: var(--aries-text-danger);
+}

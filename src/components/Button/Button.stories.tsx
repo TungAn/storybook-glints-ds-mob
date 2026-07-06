@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Button, FloatingButton, UploadButton } from './Button';
 
 const meta = {
-  title: 'Form/Button',
+  title: 'Components/Form/Button',
   component: Button,
   args: {
     children: 'CONTINUE',
@@ -95,12 +95,17 @@ export const Floating: Story = {
 
 export const Upload: Story = {
   args: {
-    children: 'UPLOAD CV',
+    children: 'Upload PDF File',
   },
   render: () => (
     <div style={{ display: 'grid', gap: 12 }}>
       <UploadButton />
-      <UploadButton populated label="CV UPLOADED" helpText="jane-doe-cv.pdf" />
+      <UploadButton
+        populated
+        fileName="Resume_1.pdf"
+        fileMeta="25KB • Uploaded on 01 Mar 2025"
+        tagLabel="Default"
+      />
       <UploadButton state="disabled" />
     </div>
   ),

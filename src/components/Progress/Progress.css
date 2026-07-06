@@ -15,7 +15,7 @@
 
 .aries-stepper {
   display: flex;
-  gap: 8px;
+  gap: var(--aries-space-small-8);
   width: 360px;
 }
 
@@ -32,7 +32,7 @@
 
 .aries-indicator {
   display: inline-flex;
-  gap: 6px;
+  gap: var(--aries-space-small-8);
 }
 
 .aries-indicator span {

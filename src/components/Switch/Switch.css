@@ -3,9 +3,9 @@
   color: var(--aries-text-outstanding);
   cursor: pointer;
   display: inline-flex;
-  font-size: 14px;
-  gap: 8px;
-  line-height: 1.4;
+  font-size: var(--aries-typography-android-body1-size);
+  gap: var(--aries-space-small-8);
+  line-height: var(--aries-typography-android-body2-line-height);
 }
 
 .aries-switch[data-disabled='true'] {
@@ -26,7 +26,7 @@
   box-sizing: border-box;
   display: inline-flex;
   height: 24px;
-  padding: 2px;
+  padding: calc(var(--aries-space-small-4) / 2);
   transition: background 0.16s ease;
   width: 44px;
 }

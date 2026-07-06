@@ -1,4 +1,5 @@
 import { Button } from '../Button/Button';
+import { Illustration } from '../Illustration/Illustration';
 import { Icon } from '../shared/Icon';
 import './EmptyState.css';
 
@@ -25,7 +26,7 @@ export function EmptyState({
     <section className="aries-empty-state" data-type={type} data-variant={variant}>
       {illustration ? (
         <div className="aries-empty-state__illustration">
-          <Icon name={type === 'error' ? 'alert' : 'search'} size={56} />
+          <Illustration kind={type === 'error' ? 'error' : 'empty'} size="small" />
         </div>
       ) : null}
       <div className="aries-empty-state__copy">

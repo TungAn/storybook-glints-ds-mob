@@ -6,30 +6,31 @@
   cursor: pointer;
   display: inline-flex;
   font-family: inherit;
-  font-weight: 700;
-  gap: 8px;
+  font-weight: var(--aries-font-weight-semibold);
+  gap: var(--aries-space-small-8);
   justify-content: center;
-  line-height: 1.5;
+  letter-spacing: var(--aries-typography-android-button-letter-spacing);
+  line-height: var(--aries-typography-android-button-line-height);
   text-transform: uppercase;
   white-space: nowrap;
 }
 
 .aries-button[data-size='large'] {
-  font-size: 14px;
+  font-size: var(--aries-typography-android-body1-size);
   min-height: 48px;
-  padding: 12px 16px;
+  padding: var(--aries-space-small-12) var(--aries-space-medium-16);
 }
 
 .aries-button[data-size='medium'] {
-  font-size: 13px;
+  font-size: var(--aries-typography-android-button-size);
   min-height: 40px;
-  padding: 9px 14px;
+  padding: var(--aries-space-small-8) var(--aries-space-small-12);
 }
 
 .aries-button[data-size='small'] {
-  font-size: 12px;
+  font-size: var(--aries-typography-android-button-size);
   min-height: 32px;
-  padding: 6px 12px;
+  padding: var(--aries-space-small-8) var(--aries-space-small-12);
 }
 
 .aries-button[data-full-width='true'] {
@@ -66,7 +67,7 @@
   border-color: transparent;
   color: var(--aries-text-active);
   min-height: auto;
-  padding: 0;
+  padding: var(--aries-space-small-0);
 }
 
 .aries-button:disabled,
@@ -103,13 +104,14 @@
   cursor: pointer;
   display: inline-flex;
   font-family: inherit;
-  font-size: 14px;
-  font-weight: 700;
-  gap: 4px;
+  font-size: var(--aries-typography-android-button-size);
+  font-weight: var(--aries-font-weight-semibold);
+  gap: var(--aries-space-small-4);
   height: 48px;
   justify-content: center;
-  line-height: 1.5;
-  padding: 12px;
+  letter-spacing: var(--aries-typography-android-button-letter-spacing);
+  line-height: var(--aries-typography-android-button-line-height);
+  padding: var(--aries-space-small-12);
   text-transform: uppercase;
 }
 
@@ -135,40 +137,83 @@
 .aries-upload-button {
   align-items: center;
   background: var(--aries-background-primary-muted);
-  border: 1px solid var(--aries-border-active);
-  border-radius: 5px;
+  border: 0;
+  border-radius: 8px;
   box-sizing: border-box;
   color: var(--aries-text-active);
   cursor: pointer;
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
   font-family: inherit;
-  gap: 10px;
-  min-height: 72px;
-  padding: 12px;
-  text-align: left;
+  gap: var(--aries-space-medium-16);
+  justify-content: center;
+  min-height: 140px;
+  padding: var(--aries-space-medium-16);
+  text-align: center;
   width: 328px;
 }
 
-.aries-upload-button span {
+.aries-upload-button__primary,
+.aries-upload-button__secondary {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--aries-space-small-4);
+  justify-content: center;
+  width: 100%;
+}
+
+.aries-upload-button__label,
+.aries-upload-button__secondary {
+  align-items: center;
+  display: inline-flex;
+  flex-direction: row;
+  gap: var(--aries-space-small-8);
+}
+
+.aries-upload-button__divider {
+  align-items: center;
+  color: var(--aries-text-supplementary);
   display: grid;
-  gap: 2px;
+  font-size: var(--aries-typography-android-overline-size);
+  font-style: normal;
+  font-weight: var(--aries-font-weight-medium);
+  gap: var(--aries-space-small-8);
+  grid-template-columns: 1fr auto 1fr;
+  letter-spacing: var(--aries-typography-android-caption-letter-spacing);
+  line-height: var(--aries-typography-android-body2-line-height);
+  width: 276px;
+}
+
+.aries-upload-button__divider span {
+  background: var(--aries-border-normal);
+  display: block;
+  height: 1px;
+}
+
+.aries-upload-button__divider em {
+  font-style: normal;
 }
 
 .aries-upload-button strong {
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: var(--aries-typography-android-body1-size);
+  font-weight: var(--aries-font-weight-semibold);
+  letter-spacing: var(--aries-typography-android-button-letter-spacing);
+  line-height: var(--aries-typography-android-button-line-height);
 }
 
 .aries-upload-button small {
-  color: var(--aries-text-normal);
-  font-size: 12px;
-  line-height: 1.5;
+  color: var(--aries-text-supplementary);
+  font-size: var(--aries-typography-android-subtitle2-size);
+  line-height: var(--aries-typography-android-body1-line-height);
 }
 
 .aries-upload-button[data-populated='true'] {
-  background: var(--aries-background-success-muted);
-  border-color: var(--aries-icon-success);
-  color: var(--aries-text-success);
+  background: var(--aries-background-supplementary);
+  color: var(--aries-text-active);
+  gap: var(--aries-space-small-4);
+  min-height: 64px;
+  padding: var(--aries-space-small-12);
 }
 
 .aries-upload-button[data-state='pressed'] {
@@ -178,7 +223,123 @@
 .aries-upload-button:disabled,
 .aries-upload-button[data-state='disabled'] {
   background: var(--aries-background-action-disabled);
-  border-color: var(--aries-border-action-disabled);
   color: var(--aries-text-supplementary);
+  cursor: not-allowed;
+}
+
+.aries-upload-button:disabled .aries-upload-button__divider,
+.aries-upload-button[data-state='disabled'] .aries-upload-button__divider,
+.aries-upload-button:disabled small,
+.aries-upload-button[data-state='disabled'] small {
+  color: var(--aries-text-supplementary);
+}
+
+.aries-upload-stack {
+  display: grid;
+  gap: var(--aries-space-small-12);
+  width: 328px;
+}
+
+.aries-upload-file {
+  align-items: center;
+  background: var(--aries-background-normal);
+  border: 1px solid var(--aries-border-normal);
+  box-sizing: border-box;
+  color: var(--aries-text-normal);
+  display: grid;
+  gap: var(--aries-space-medium-16);
+  grid-template-columns: 33px minmax(0, 1fr) 18px;
+  min-height: 64px;
+  padding: var(--aries-space-small-12);
+  width: 328px;
+}
+
+.aries-upload-file__type {
+  align-items: center;
+  background: var(--aries-background-supplementary2);
+  color: var(--aries-text-danger);
+  display: grid;
+  flex: 0 0 auto;
+  font-size: 9px;
+  font-weight: var(--aries-font-weight-bold);
+  height: 40px;
+  justify-items: center;
+  line-height: 1;
+  padding-top: var(--aries-space-small-4);
+  position: relative;
+  width: 33px;
+}
+
+.aries-upload-file__type::after {
+  background: var(--aries-background-danger-bright);
+  bottom: 0;
+  color: var(--aries-text-normal-on-dark);
+  content: '';
+  height: 12px;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+.aries-upload-file__type span {
+  bottom: 3px;
+  color: var(--aries-text-normal-on-dark);
+  font-size: 8px;
+  line-height: 1;
+  position: absolute;
+  z-index: 1;
+}
+
+.aries-upload-file__copy {
+  display: grid;
+  gap: var(--aries-space-small-4);
+  min-width: 0;
+}
+
+.aries-upload-file__title {
+  align-items: center;
+  display: flex;
+  gap: var(--aries-space-small-8);
+  min-width: 0;
+}
+
+.aries-upload-file__title strong {
+  color: var(--aries-text-outstanding);
+  display: block;
+  font-size: var(--aries-typography-android-body1-size);
+  font-weight: var(--aries-font-weight-semibold);
+  line-height: var(--aries-typography-android-body2-line-height);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.aries-upload-file__copy small {
+  color: var(--aries-text-supplementary);
+  font-size: var(--aries-typography-android-subtitle2-size);
+  line-height: var(--aries-typography-android-body1-line-height);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.aries-upload-file__menu {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: var(--aries-icon-normal);
+  cursor: pointer;
+  display: inline-flex;
+  height: 32px;
+  justify-content: center;
+  margin: calc(-1 * var(--aries-space-small-8));
+  padding: var(--aries-space-small-0);
+  width: 32px;
+}
+
+.aries-upload-file__menu:disabled,
+.aries-upload-stack[data-state='disabled'] .aries-upload-file__menu {
+  color: var(--aries-icon-disabled);
   cursor: not-allowed;
 }

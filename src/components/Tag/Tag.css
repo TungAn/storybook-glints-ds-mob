@@ -4,12 +4,13 @@
   border-radius: 4px;
   color: var(--tag-color, var(--aries-text-normal));
   display: inline-flex;
-  font-size: 12px;
-  font-weight: 400;
-  gap: 4px;
-  line-height: 1.5;
+  font-size: var(--aries-typography-android-subtitle2-size);
+  font-weight: var(--aries-font-weight-regular);
+  gap: var(--aries-space-small-4);
+  letter-spacing: var(--aries-typography-android-subtitle2-letter-spacing);
+  line-height: var(--aries-typography-android-subtitle2-line-height);
   min-height: 22px;
-  padding: 2px 8px;
+  padding: calc(var(--aries-space-small-4) / 2) var(--aries-space-small-8);
   vertical-align: middle;
   white-space: nowrap;
 }
@@ -26,6 +27,26 @@
 
 .aries-tag__label {
   display: inline-block;
+}
+
+.aries-tag[data-size='small'] {
+  font-size: var(--aries-typography-android-overline-size);
+  font-weight: var(--aries-font-weight-medium);
+  gap: calc(var(--aries-space-small-4) / 2);
+  letter-spacing: var(--aries-typography-android-overline-letter-spacing);
+  line-height: var(--aries-typography-android-overline-line-height);
+  min-height: 18px;
+  padding: calc(var(--aries-space-small-4) / 2) calc(var(--aries-space-small-12) / 2);
+}
+
+.aries-tag[data-size='small'] .aries-tag__icon {
+  height: 14px;
+  width: 14px;
+}
+
+.aries-tag[data-size='small'][data-rounded='false'] {
+  padding-left: var(--aries-space-small-4);
+  padding-right: var(--aries-space-small-4);
 }
 
 .aries-tag[data-color='grey'][data-type='muted'] {
@@ -65,7 +86,7 @@
 
 .aries-tag[data-color='yellow'][data-type='muted'] {
   --tag-background: var(--aries-background-discount-muted);
-  --tag-color: var(--aries-text-outstanding);
+  --tag-color: var(--aries-text-discount);
 }
 
 .aries-tag[data-color='orange'][data-type='muted'] {

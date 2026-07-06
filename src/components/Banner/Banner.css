@@ -4,9 +4,9 @@
   box-sizing: border-box;
   color: var(--aries-text-normal);
   display: flex;
-  gap: 12px;
+  gap: var(--aries-space-small-12);
   min-height: 112px;
-  padding: 12px 16px;
+  padding: var(--aries-space-small-12) var(--aries-space-medium-16);
   width: 360px;
 }
 
@@ -16,7 +16,7 @@
 
 .aries-banner[data-compact='true'] {
   min-height: auto;
-  padding: 10px 12px;
+  padding: var(--aries-space-small-12);
 }
 
 .aries-banner__icon {
@@ -27,26 +27,26 @@
 .aries-banner__content {
   display: grid;
   flex: 1 1 auto;
-  gap: 4px;
+  gap: var(--aries-space-small-4);
   min-width: 0;
 }
 
 .aries-banner__content strong {
   color: var(--aries-text-outstanding);
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.4;
+  font-size: var(--aries-typography-android-body1-size);
+  font-weight: var(--aries-font-weight-semibold);
+  line-height: var(--aries-typography-android-body2-line-height);
 }
 
 .aries-banner__content p {
-  font-size: 12px;
-  line-height: 1.5;
-  margin: 0;
+  font-size: var(--aries-typography-android-subtitle2-size);
+  line-height: var(--aries-typography-android-body1-line-height);
+  margin: var(--aries-space-small-0);
 }
 
 .aries-banner__content .aries-button {
   justify-self: start;
-  margin-top: 4px;
+  margin-top: var(--aries-space-small-4);
 }
 
 .aries-banner__close {
@@ -57,7 +57,7 @@
   cursor: pointer;
   display: inline-flex;
   flex: 0 0 auto;
-  padding: 0;
+  padding: var(--aries-space-small-0);
 }
 
 .aries-banner[data-status='informative'] {
@@ -71,7 +71,7 @@
 }
 
 .aries-banner[data-status='warning'] {
-  --banner-background: var(--aries-background-cautious);
+  --banner-background: var(--aries-background-enticing-muted);
   --banner-icon: var(--aries-icon-cautious);
 }
 
@@ -81,6 +81,6 @@
 }
 
 .aries-banner[data-status='promotional'] {
-  --banner-background: var(--aries-background-outstanding);
-  --banner-icon: var(--aries-icon-enticing);
+  --banner-background: var(--aries-background-discount-muted);
+  --banner-icon: var(--aries-icon-discount);
 }

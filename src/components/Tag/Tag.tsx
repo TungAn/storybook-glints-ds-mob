@@ -2,11 +2,13 @@ import './Tag.css';
 
 export type TagColor = 'grey' | 'blue' | 'green' | 'red' | 'yellow' | 'orange' | 'outstanding';
 export type TagType = 'muted' | 'bright';
+export type TagSize = 'default' | 'small';
 
 export interface TagProps {
   label: string;
   color?: TagColor;
   type?: TagType;
+  size?: TagSize;
   rounded?: boolean;
   icon?: boolean;
 }
@@ -15,6 +17,7 @@ export function Tag({
   label,
   color = 'grey',
   type = 'muted',
+  size = 'default',
   rounded = true,
   icon = true,
 }: TagProps) {
@@ -22,6 +25,7 @@ export function Tag({
     <span
       className="aries-tag"
       data-color={color}
+      data-size={size}
       data-type={type}
       data-rounded={rounded}
     >

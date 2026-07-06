@@ -1,11 +1,11 @@
 .aries-divider {
   border-top: 1px solid var(--aries-border-normal);
   height: 0;
-  margin: 10px 0;
+  margin: var(--aries-space-small-12) var(--aries-space-small-0);
   width: 100%;
 }
 
 .aries-divider[data-inset='true'] {
-  margin-left: 56px;
-  width: calc(100% - 56px);
+  margin-left: calc(var(--aries-space-large-40) + var(--aries-space-medium-16));
+  width: calc(100% - (var(--aries-space-large-40) + var(--aries-space-medium-16)));
 }

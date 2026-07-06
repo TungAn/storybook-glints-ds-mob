@@ -1,0 +1,243 @@
+.aries-doc-page {
+  color: var(--aries-text-normal);
+  display: grid;
+  font-size: var(--aries-typography-android-body1-size);
+  gap: 24px;
+  line-height: 1.6;
+  max-width: 960px;
+}
+
+.aries-doc-hero {
+  display: grid;
+  gap: 8px;
+}
+
+.aries-doc-eyebrow {
+  color: var(--aries-text-active);
+  font-size: var(--aries-typography-android-subtitle2-size);
+  font-weight: var(--aries-font-weight-bold);
+  letter-spacing: var(--aries-typography-android-body1-letter-spacing);
+  line-height: var(--aries-typography-android-body1-line-height);
+  text-transform: uppercase;
+}
+
+.aries-doc-page h1,
+.aries-doc-page h2,
+.aries-doc-page h3 {
+  color: var(--aries-text-outstanding);
+  margin: 0;
+}
+
+.aries-doc-page h1 {
+  font-size: 32px;
+  line-height: 1.25;
+}
+
+.aries-doc-page h2 {
+  font-size: 20px;
+  line-height: var(--aries-typography-android-body2-line-height);
+}
+
+.aries-doc-page h3 {
+  font-size: var(--aries-typography-android-subtitle1-size);
+  line-height: var(--aries-typography-android-body1-line-height);
+}
+
+.aries-doc-page p {
+  margin: 0;
+}
+
+.aries-doc-section {
+  display: grid;
+  gap: 12px;
+}
+
+.aries-doc-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.aries-doc-card {
+  background: var(--aries-background-normal);
+  border: 1px solid var(--aries-border-normal);
+  border-radius: 8px;
+  display: grid;
+  gap: 8px;
+  padding: 16px;
+}
+
+.aries-doc-example {
+  align-items: start;
+  background: var(--aries-background-supplementary);
+  border: 1px solid var(--aries-border-normal);
+  border-radius: 8px;
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+}
+
+.aries-doc-code {
+  background: var(--aries-background-dark);
+  border-radius: 8px;
+  color: var(--aries-text-normal-on-dark);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: var(--aries-typography-android-subtitle2-size);
+  line-height: 1.6;
+  margin: 0;
+  overflow: auto;
+  padding: 16px;
+  white-space: pre;
+}
+
+.aries-doc-table {
+  border-collapse: collapse;
+  font-size: 13px;
+  width: 100%;
+}
+
+.aries-doc-table th,
+.aries-doc-table td {
+  border-bottom: 1px solid var(--aries-border-normal);
+  padding: 10px 8px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.aries-doc-table th {
+  color: var(--aries-text-outstanding);
+  font-weight: var(--aries-font-weight-bold);
+}
+
+.aries-doc-inline-example {
+  align-items: center;
+  color: var(--aries-text-outstanding);
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.aries-doc-muted {
+  color: var(--aries-text-supplementary);
+  font-size: var(--aries-typography-android-subtitle2-size);
+  font-weight: var(--aries-font-weight-bold);
+  line-height: var(--aries-typography-android-body1-line-height);
+}
+
+.aries-spacing-swatch {
+  background: var(--aries-background-action01);
+  display: inline-block;
+  height: 20px;
+  margin-right: var(--aries-space-small-8);
+  vertical-align: middle;
+  width: var(--spacing-value);
+}
+
+.aries-token-swatch {
+  align-items: center;
+  display: inline-flex;
+  gap: 8px;
+}
+
+.aries-token-swatch span {
+  border: 1px solid var(--aries-border-normal);
+  border-radius: 4px;
+  display: inline-block;
+  height: 20px;
+  width: 32px;
+}
+
+.aries-icon-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+.aries-icon-card {
+  align-items: center;
+  background: var(--aries-background-normal);
+  border: 1px solid var(--aries-border-normal);
+  border-radius: 8px;
+  color: var(--aries-icon-normal);
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  min-height: 116px;
+  padding: 16px;
+  text-align: center;
+}
+
+.aries-icon-card strong {
+  color: var(--aries-text-outstanding);
+  font-size: 13px;
+}
+
+.aries-icon-card span {
+  color: var(--aries-text-supplementary);
+  font-size: var(--aries-typography-android-subtitle2-size);
+}
+
+.aries-icon-library {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+  max-height: 720px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.aries-icon-card--compact {
+  gap: 6px;
+  min-height: 88px;
+  padding: 12px 8px;
+}
+
+.aries-icon-card--compact span {
+  overflow-wrap: anywhere;
+}
+
+.aries-illustration-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+}
+
+.aries-illustration-grid .aries-doc-card {
+  align-items: center;
+  justify-items: center;
+}
+
+.aries-effect-grid {
+  display: grid;
+  gap: var(--aries-space-medium-16);
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+.aries-effect-card {
+  min-height: 160px;
+}
+
+.aries-effect-card strong {
+  color: var(--aries-text-active);
+  font-size: var(--aries-typography-android-subtitle2-size);
+  line-height: var(--aries-typography-android-subtitle2-line-height);
+}
+
+.aries-effect-card code {
+  color: var(--aries-text-supplementary);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: var(--aries-typography-android-subtitle2-size);
+  line-height: var(--aries-typography-android-subtitle2-line-height);
+}
+
+.aries-template-blank {
+  align-items: center;
+  background: var(--aries-background-supplementary);
+  border: 1px dashed var(--aries-border-input-box);
+  border-radius: 8px;
+  color: var(--aries-text-supplementary);
+  display: flex;
+  height: 640px;
+  justify-content: center;
+  width: 360px;
+}

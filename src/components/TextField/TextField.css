@@ -1,0 +1,108 @@
+.aries-text-field {
+  color: var(--aries-text-normal);
+  display: grid;
+  gap: var(--aries-space-small-4);
+  width: 280px;
+}
+
+.aries-text-field__label {
+  font-size: var(--aries-typography-android-caption-size);
+  font-weight: var(--aries-font-weight-medium);
+  letter-spacing: var(--aries-typography-android-caption-letter-spacing);
+  line-height: var(--aries-typography-android-caption-line-height);
+}
+
+.aries-text-field input {
+  background: var(--field-background, var(--aries-background-normal));
+  border: 1px solid var(--field-border, var(--aries-border-input-box));
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: var(--aries-text-normal);
+  font: inherit;
+  font-size: var(--aries-typography-android-body1-size);
+  height: 48px;
+  line-height: var(--aries-typography-android-body1-line-height);
+  padding: var(--aries-space-small-0) var(--aries-space-small-12);
+  width: 100%;
+}
+
+.aries-text-field input::placeholder,
+.aries-search-box input::placeholder {
+  color: var(--aries-text-supplementary);
+}
+
+.aries-text-field small {
+  color: var(--aries-text-normal);
+  font-size: var(--aries-typography-android-subtitle2-size);
+  line-height: var(--aries-typography-android-body1-line-height);
+}
+
+.aries-text-field[data-state='active'],
+.aries-text-field[data-state='pressed'] {
+  --field-background: var(--aries-background-input-box-active);
+  --field-border: var(--aries-border-input-box-active);
+}
+
+.aries-text-field[data-state='filled'] {
+  --field-border: var(--aries-border-input-box);
+}
+
+.aries-text-field[data-state='disabled'] {
+  --field-background: var(--aries-background-input-box-disabled);
+  --field-border: var(--aries-border-input-box-disabled);
+}
+
+.aries-text-field[data-state='error'] {
+  --field-background: var(--aries-background-danger-muted);
+  --field-border: var(--aries-border-danger);
+}
+
+.aries-text-field[data-state='error'] small {
+  color: var(--aries-text-danger);
+}
+
+.aries-search-box {
+  align-items: center;
+  background: var(--aries-background-search-box, var(--aries-background-primary-muted));
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: var(--aries-icon-normal);
+  display: flex;
+  gap: var(--aries-space-small-8);
+  height: 40px;
+  padding: var(--aries-space-small-0) var(--aries-space-small-12);
+  width: 328px;
+}
+
+.aries-search-box input {
+  background: transparent;
+  border: 0;
+  color: var(--aries-text-normal);
+  flex: 1 1 auto;
+  font: inherit;
+  font-size: var(--aries-typography-android-body1-size);
+  outline: none;
+}
+
+.aries-otp-field {
+  display: flex;
+  gap: var(--aries-space-small-8);
+}
+
+.aries-otp-field span {
+  align-items: center;
+  border: 1px solid var(--aries-border-input-box);
+  border-radius: 4px;
+  color: var(--aries-text-outstanding);
+  display: inline-flex;
+  font-size: var(--aries-typography-android-h6-size);
+  font-weight: var(--aries-font-weight-bold);
+  letter-spacing: var(--aries-typography-android-h6-letter-spacing);
+  height: 48px;
+  justify-content: center;
+  width: 40px;
+}
+
+.aries-otp-field span[data-filled='true'] {
+  border-color: var(--aries-border-active);
+}

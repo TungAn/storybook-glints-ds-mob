@@ -2,52 +2,131 @@
   background: var(--aries-background-normal);
   box-sizing: border-box;
   display: grid;
-  gap: 4px;
-  padding: 12px 16px;
+  gap: var(--aries-space-small-4);
+  padding: var(--aries-space-small-12) var(--aries-space-medium-16);
   width: 320px;
+}
+
+.aries-job-card[data-card-type='search'],
+.aries-job-card[data-card-type='saved'] {
+  gap: var(--aries-space-small-8);
+  padding: var(--aries-space-medium-16);
+}
+
+.aries-job-card[data-status='closed'],
+.aries-job-card[data-status='expired'] {
+  opacity: 0.72;
 }
 
 .aries-job-card__tags {
   display: flex;
-  gap: 6px;
+  gap: var(--aries-space-small-8);
+}
+
+.aries-job-card__header {
+  align-items: flex-start;
+  display: flex;
+  gap: var(--aries-space-small-12);
+  justify-content: space-between;
 }
 
 .aries-job-card h3,
 .aries-company-card h3,
 .aries-section h2 {
   color: var(--aries-text-outstanding);
-  margin: 0;
+  margin: var(--aries-space-small-0);
 }
 
 .aries-job-card h3 {
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.5;
+  font-size: var(--aries-typography-android-subtitle1-size);
+  font-weight: var(--aries-font-weight-semibold);
+  line-height: var(--aries-typography-android-body1-line-height);
+}
+
+.aries-job-card__salary {
+  color: var(--aries-text-active);
+  flex: 0 0 auto;
+  font-size: var(--aries-typography-android-subtitle2-size);
+  line-height: var(--aries-typography-android-body1-line-height);
+  text-align: right;
+  white-space: nowrap;
 }
 
 .aries-job-card__meta {
   display: flex;
-  gap: 12px;
+  gap: var(--aries-space-small-12);
 }
 
 .aries-job-card__meta span,
-.aries-job-card p {
+.aries-job-card__date {
   align-items: center;
   color: var(--aries-text-normal);
   display: inline-flex;
-  font-size: 12px;
-  gap: 4px;
-  line-height: 1.5;
-  margin: 0;
+  font-size: var(--aries-typography-android-subtitle2-size);
+  gap: var(--aries-space-small-4);
+  line-height: var(--aries-typography-android-body1-line-height);
+  margin: var(--aries-space-small-0);
 }
 
 .aries-job-card__meta span:first-child {
   color: var(--aries-text-outstanding);
   flex: 1 1 0;
+  min-width: 0;
 }
 
-.aries-job-card p {
+.aries-job-card__date {
   color: var(--aries-text-supplementary);
+}
+
+.aries-job-card__skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--aries-space-small-8);
+}
+
+.aries-job-card__cta-row {
+  align-items: center;
+  border-top: 1px solid var(--aries-border-normal);
+  display: flex;
+  gap: var(--aries-space-small-12);
+  margin-top: var(--aries-space-small-4);
+  padding-top: var(--aries-space-small-12);
+}
+
+.aries-job-card__recruiter {
+  align-items: center;
+  display: flex;
+  flex: 1 1 auto;
+  gap: var(--aries-space-small-8);
+  min-width: 0;
+}
+
+.aries-job-card__recruiter > div {
+  display: grid;
+  gap: var(--aries-space-small-4);
+  min-width: 0;
+}
+
+.aries-job-card__recruiter span {
+  align-items: center;
+  display: flex;
+  gap: var(--aries-space-small-4);
+  min-width: 0;
+}
+
+.aries-job-card__recruiter strong {
+  color: var(--aries-text-outstanding);
+  font-size: var(--aries-typography-android-subtitle2-size);
+  line-height: var(--aries-typography-android-body2-line-height);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.aries-job-card__recruiter small {
+  color: var(--aries-text-supplementary);
+  font-size: 11px;
+  line-height: var(--aries-typography-android-body2-line-height);
 }
 
 .aries-company-card {
@@ -56,22 +135,22 @@
   border: 1px solid var(--aries-border-normal);
   border-radius: 8px;
   display: flex;
-  gap: 12px;
-  padding: 12px;
+  gap: var(--aries-space-small-12);
+  padding: var(--aries-space-small-12);
   width: 320px;
 }
 
 .aries-company-card h3 {
-  font-size: 16px;
-  line-height: 1.4;
+  font-size: var(--aries-typography-android-subtitle1-size);
+  line-height: var(--aries-typography-android-body2-line-height);
 }
 
 .aries-company-card p,
 .aries-section header p {
   color: var(--aries-text-normal);
-  font-size: 12px;
-  line-height: 1.5;
-  margin: 0;
+  font-size: var(--aries-typography-android-subtitle2-size);
+  line-height: var(--aries-typography-android-body1-line-height);
+  margin: var(--aries-space-small-0);
 }
 
 .aries-section {
@@ -79,17 +158,17 @@
   border-radius: 8px;
   box-sizing: border-box;
   display: grid;
-  gap: 12px;
-  padding: 16px;
+  gap: var(--aries-space-small-12);
+  padding: var(--aries-space-medium-16);
   width: 360px;
 }
 
 .aries-section header {
   display: grid;
-  gap: 2px;
+  gap: var(--aries-space-small-4);
 }
 
 .aries-section h2 {
-  font-size: 16px;
-  line-height: 1.5;
+  font-size: var(--aries-typography-android-subtitle1-size);
+  line-height: var(--aries-typography-android-body1-line-height);
 }

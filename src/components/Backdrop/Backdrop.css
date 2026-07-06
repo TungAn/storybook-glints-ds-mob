@@ -4,6 +4,6 @@
   cursor: pointer;
   display: block;
   opacity: var(--backdrop-opacity);
-  padding: 0;
+  padding: var(--aries-space-small-0);
   width: 360px;
 }

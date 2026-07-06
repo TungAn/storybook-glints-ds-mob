@@ -20,6 +20,10 @@ const meta = {
       control: 'select',
       options: ['muted', 'bright'],
     },
+    size: {
+      control: 'select',
+      options: ['default', 'small'],
+    },
   },
 } satisfies Meta<typeof Tag>;
 
@@ -39,6 +43,14 @@ export const Squared: Story = {
   args: {
     rounded: false,
   },
+};
+
+export const InlineSmall: Story = {
+  render: () => (
+    <p style={{ alignItems: 'center', display: 'inline-flex', gap: 8, margin: 0 }}>
+      Resume_1.pdf <Tag label="Default" color="green" size="small" rounded={false} icon={false} />
+    </p>
+  ),
 };
 
 export const ColorVariants: Story = {

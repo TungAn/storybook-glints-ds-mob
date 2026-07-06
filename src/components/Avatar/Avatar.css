@@ -5,7 +5,7 @@
   display: inline-flex;
   flex: 0 0 auto;
   font-size: calc(var(--avatar-size) * 0.4);
-  font-weight: 700;
+  font-weight: var(--aries-font-weight-bold);
   height: var(--avatar-size);
   justify-content: center;
   overflow: hidden;
@@ -30,15 +30,15 @@
 
 .aries-avatar-stack {
   display: inline-flex;
-  padding-left: 2px;
+  padding-left: var(--aries-space-small-4);
 }
 
 .aries-avatar-stack .aries-avatar {
-  margin-left: -6px;
+  margin-left: calc(-1 * var(--aries-space-small-8));
 }
 
 .aries-avatar-stack .aries-avatar:first-child {
-  margin-left: 0;
+  margin-left: var(--aries-space-small-0);
 }
 
 .aries-avatar--extra {
