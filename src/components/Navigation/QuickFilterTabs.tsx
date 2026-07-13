@@ -37,7 +37,7 @@ const defaultItems: QuickFilterTab[] = [
 ];
 
 export function QuickFilterTabs({ items = defaultItems, activeIndex: controlledIndex, onSelect }: QuickFilterTabsProps) {
-  const [internalIndex, setInternalIndex] = useState(1);
+  const [internalIndex, setInternalIndex] = useState(0);
   const activeIndex = controlledIndex ?? internalIndex;
 
   const handleClick = (index: number) => {

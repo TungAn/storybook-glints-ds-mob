@@ -111,7 +111,7 @@
   background: var(--aries-background-normal);
   display: flex;
   gap: var(--aries-space-small-4);
-  overflow-x: visible;
+  overflow-x: auto;
   padding: var(--aries-space-small-4) var(--aries-space-medium-16) 0;
   position: relative;
   width: 100%;
