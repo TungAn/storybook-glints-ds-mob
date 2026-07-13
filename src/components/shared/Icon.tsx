@@ -3,6 +3,7 @@ import {
   RiArrowDownSLine,
   RiArrowLeftLine,
   RiAttachment2,
+  RiBookFill,
   RiBriefcaseLine,
   RiBuilding4Line,
   RiCalendarLine,
@@ -10,16 +11,22 @@ import {
   RiCloseLine,
   RiEqualizerLine,
   RiFileTextFill,
+  RiHotelFill,
   RiImageLine,
   RiInformationLine,
   RiMapPinLine,
+  RiMoneyDollarCircleFill,
+  RiMoonFill,
   RiMovieLine,
   RiMoreFill,
   RiRefreshLine,
+  RiRestaurantFill,
   RiSearchLine,
   RiSendPlaneLine,
   RiSettings3Line,
-  RiSparkling2Line,
+  RiShoppingBagFill,
+  RiSparkling2Fill,
+  RiSunFill,
   RiUpload2Line,
   RiUser3Line,
   RiUserLine,
@@ -28,6 +35,7 @@ import {
 export type IconName =
   | 'alert'
   | 'arrow-left'
+  | 'book'
   | 'briefcase'
   | 'building'
   | 'calendar'
@@ -36,18 +44,24 @@ export type IconName =
   | 'close'
   | 'filter'
   | 'file-text'
+  | 'hotel'
   | 'image'
   | 'info'
   | 'location'
+  | 'money'
+  | 'moon'
   | 'more'
   | 'movie'
   | 'paperclip'
   | 'profile'
   | 'refresh'
+  | 'restaurant'
   | 'search'
   | 'send'
   | 'settings'
+  | 'shopping-bag'
   | 'sparkle'
+  | 'sun'
   | 'upload'
   | 'user';
 
@@ -62,6 +76,7 @@ type RemixIconComponent = typeof RiSearchLine;
 export const remixIconByName: Record<IconName, RemixIconComponent> = {
   alert: RiAlarmWarningLine,
   'arrow-left': RiArrowLeftLine,
+  book: RiBookFill,
   briefcase: RiBriefcaseLine,
   building: RiBuilding4Line,
   calendar: RiCalendarLine,
@@ -70,18 +85,24 @@ export const remixIconByName: Record<IconName, RemixIconComponent> = {
   close: RiCloseLine,
   filter: RiEqualizerLine,
   'file-text': RiFileTextFill,
+  hotel: RiHotelFill,
   image: RiImageLine,
   info: RiInformationLine,
   location: RiMapPinLine,
+  money: RiMoneyDollarCircleFill,
+  moon: RiMoonFill,
   more: RiMoreFill,
   movie: RiMovieLine,
   paperclip: RiAttachment2,
   profile: RiUser3Line,
   refresh: RiRefreshLine,
+  restaurant: RiRestaurantFill,
   search: RiSearchLine,
   send: RiSendPlaneLine,
   settings: RiSettings3Line,
-  sparkle: RiSparkling2Line,
+  'shopping-bag': RiShoppingBagFill,
+  sparkle: RiSparkling2Fill,
+  sun: RiSunFill,
   upload: RiUpload2Line,
   user: RiUserLine,
 };
@@ -89,6 +110,7 @@ export const remixIconByName: Record<IconName, RemixIconComponent> = {
 export const remixIconSourceByName: Record<IconName, string> = {
   alert: 'RiAlarmWarningLine',
   'arrow-left': 'RiArrowLeftLine',
+  book: 'RiBookFill',
   briefcase: 'RiBriefcaseLine',
   building: 'RiBuilding4Line',
   calendar: 'RiCalendarLine',
@@ -97,18 +119,24 @@ export const remixIconSourceByName: Record<IconName, string> = {
   close: 'RiCloseLine',
   filter: 'RiEqualizerLine',
   'file-text': 'RiFileTextFill',
+  hotel: 'RiHotelFill',
   image: 'RiImageLine',
   info: 'RiInformationLine',
   location: 'RiMapPinLine',
+  money: 'RiMoneyDollarCircleFill',
+  moon: 'RiMoonFill',
   more: 'RiMoreFill',
   movie: 'RiMovieLine',
   paperclip: 'RiAttachment2',
   profile: 'RiUser3Line',
   refresh: 'RiRefreshLine',
+  restaurant: 'RiRestaurantFill',
   search: 'RiSearchLine',
   send: 'RiSendPlaneLine',
   settings: 'RiSettings3Line',
-  sparkle: 'RiSparkling2Line',
+  'shopping-bag': 'RiShoppingBagFill',
+  sparkle: 'RiSparkling2Fill',
+  sun: 'RiSunFill',
   upload: 'RiUpload2Line',
   user: 'RiUserLine',
 };

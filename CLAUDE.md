@@ -85,6 +85,7 @@ Reference documentation for the Glints Aries App UI Kit 2.0. Load files based on
 | Top app bar / navbar | [`navigation/header.md`](./navigation/header.md) |
 | Bottom tab bar (app-level nav) | [`navigation/navigation-bar.md`](./navigation/navigation-bar.md) |
 | Inline tab strip (within a screen) | [`navigation/tab.md`](./navigation/tab.md) |
+| Quick filter tabs (horizontally scrollable icon+label filters) | [`navigation/quick-filter-tabs.md`](./navigation/quick-filter-tabs.md) |
 
 ---
 
