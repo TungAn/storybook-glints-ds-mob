@@ -106,3 +106,74 @@
   color: var(--aries-text-active);
   font-weight: var(--aries-font-weight-semibold);
 }
+
+.aries-quick-filter-tabs {
+  background: var(--aries-background-normal);
+  display: flex;
+  gap: var(--aries-space-small-4);
+  overflow-x: visible;
+  padding: var(--aries-space-small-4) var(--aries-space-medium-16) 0;
+  position: relative;
+  width: 100%;
+}
+
+.aries-quick-filter-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.aries-quick-filter-tabs__fade {
+  background: linear-gradient(90deg, transparent, var(--aries-background-normal));
+  height: 56px;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: var(--aries-space-small-4);
+  width: 16px;
+}
+
+.aries-quick-filter-tab {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: var(--aries-space-small-4);
+  height: 52px;
+  min-width: 58px;
+  padding: 0;
+  position: relative;
+}
+
+.aries-quick-filter-tab__icon {
+  align-items: center;
+  color: var(--aries-icon-active);
+  display: flex;
+  height: 24px;
+  justify-content: center;
+  width: 24px;
+}
+
+.aries-quick-filter-tab__label {
+  color: var(--aries-text-supplementary);
+  font-family: var(--aries-font-family-android);
+  font-size: var(--aries-typography-android-overline-size);
+  font-weight: var(--aries-font-weight-medium);
+  letter-spacing: var(--aries-typography-android-overline-letter-spacing);
+  line-height: var(--aries-typography-android-overline-line-height);
+  white-space: nowrap;
+}
+
+.aries-quick-filter-tab[aria-current='true'] .aries-quick-filter-tab__label {
+  color: var(--aries-text-active);
+}
+
+.aries-quick-filter-tab__indicator {
+  background: var(--aries-border-active);
+  border-radius: 1px 1px 0 0;
+  bottom: 0;
+  height: 2px;
+  left: 0;
+  position: absolute;
+  right: 0;
+}

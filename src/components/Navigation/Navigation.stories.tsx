@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Navbar, NavHeader, SearchHeader, TabGroup } from './Navigation';
+import { QuickFilterTabs } from './QuickFilterTabs';
 
 const meta = {
   title: 'Components/Navigation/Header & Bars',
@@ -21,3 +22,4 @@ export const AvatarTitle: Story = { args: { avatar: true, backButton: true, acti
 export const Search: Story = { render: () => <SearchHeader /> };
 export const BottomNavbar: Story = { render: () => <Navbar /> };
 export const InlineTabs: Story = { render: () => <TabGroup /> };
+export const QuickFilter: Story = { render: () => <QuickFilterTabs /> };
