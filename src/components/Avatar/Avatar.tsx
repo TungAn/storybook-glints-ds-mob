@@ -1,4 +1,5 @@
 import './Avatar.css';
+import { Icon } from '../shared/Icon';
 
 export interface AvatarProps {
   name: string;
@@ -11,6 +12,11 @@ export interface MultipleAvatarsProps {
   avatars: AvatarProps[];
   size?: AvatarProps['size'];
   max?: number;
+}
+
+export interface EditableCompanyLogoProps {
+  label?: string;
+  src?: string;
 }
 
 function initials(name: string) {
@@ -52,6 +58,17 @@ export function MultipleAvatars({ avatars, size = 24, max = 4 }: MultipleAvatars
           +{extra}
         </span>
       ) : null}
+    </div>
+  );
+}
+
+export function EditableCompanyLogo({ label = 'LOGO', src }: EditableCompanyLogoProps) {
+  return (
+    <div className="aries-editable-company-logo">
+      {src ? <img src={src} alt="" /> : <span>{label}</span>}
+      <button type="button" aria-label="Edit company logo">
+        <Icon name="pencil" size={16} />
+      </button>
     </div>
   );
 }

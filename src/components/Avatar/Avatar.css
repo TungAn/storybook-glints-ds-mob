@@ -45,3 +45,47 @@
   background: var(--aries-background-supplementary2);
   color: var(--aries-text-normal);
 }
+
+.aries-editable-company-logo {
+  align-items: center;
+  background: var(--aries-background-supplementary2);
+  border-radius: 8px;
+  color: var(--aries-border-input-box-disabled);
+  display: inline-flex;
+  height: 72px;
+  justify-content: center;
+  position: relative;
+  width: 72px;
+}
+
+.aries-editable-company-logo > span {
+  font-size: var(--aries-typography-android-caption-size);
+  font-weight: var(--aries-font-weight-medium);
+  letter-spacing: var(--aries-typography-android-caption-letter-spacing);
+  line-height: var(--aries-typography-android-caption-line-height);
+}
+
+.aries-editable-company-logo > img {
+  border-radius: 8px;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.aries-editable-company-logo button {
+  align-items: center;
+  background: var(--aries-background-primary-bright);
+  border: 0;
+  border-radius: 50%;
+  color: var(--aries-text-normal-on-dark);
+  cursor: pointer;
+  display: inline-flex;
+  height: 28px;
+  justify-content: center;
+  padding: var(--aries-space-small-0);
+  position: absolute;
+  right: 0;
+  top: 44px;
+  width: 28px;
+}

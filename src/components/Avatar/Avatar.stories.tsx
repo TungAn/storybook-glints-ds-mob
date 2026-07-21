@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Avatar, MultipleAvatars } from './Avatar';
+import { Avatar, EditableCompanyLogo, MultipleAvatars } from './Avatar';
 
 const meta = {
   title: 'Components/Avatar',
@@ -50,4 +50,8 @@ export const Multiple: Story = {
       ]}
     />
   ),
+};
+
+export const CompanyLogo: StoryObj<typeof EditableCompanyLogo> = {
+  render: () => <EditableCompanyLogo />,
 };

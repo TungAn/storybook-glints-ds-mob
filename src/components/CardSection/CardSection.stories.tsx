@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { CompanyCard, JobCard, Section } from './CardSection';
+import { CompanyCard, FormListSection, FormNavigationRow, JobCard, Section } from './CardSection';
 
 const meta = {
   title: 'Components/Card & Section',
@@ -101,5 +101,16 @@ export const SectionWrapper: Story = {
         <JobCard cardType="search" title="Frontend Engineer" location="Singapore" />
       </div>
     </Section>
+  ),
+};
+
+export const FormList: Story = {
+  render: () => (
+    <FormListSection title="Company Info">
+      <FormNavigationRow label="Company Name" placeholder="Enter company name" required />
+      <FormNavigationRow label="Industry" placeholder="Add industry" required />
+      <FormNavigationRow label="Company Size" placeholder="Select company size" required />
+      <FormNavigationRow label="Company Description" placeholder="Introduce your company, its mission, as well as its perks and benefits..." required />
+    </FormListSection>
   ),
 };

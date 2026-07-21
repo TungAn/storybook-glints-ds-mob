@@ -2,6 +2,7 @@
   align-items: center;
   background: var(--tag-background, var(--aries-background-supplementary));
   border-radius: 4px;
+  box-sizing: border-box;
   color: var(--tag-color, var(--aries-text-normal));
   display: inline-flex;
   font-size: var(--aries-typography-android-subtitle2-size);

@@ -14,62 +14,14 @@
 }
 
 .aries-illustration__art {
-  background: var(--aries-background-primary-muted);
-  border-radius: 28px;
-  box-sizing: border-box;
   height: 120px;
-  overflow: hidden;
-  position: relative;
+  object-fit: contain;
   width: 120px;
 }
 
 .aries-illustration[data-size='small'] .aries-illustration__art {
-  border-radius: 22px;
   height: 96px;
   width: 96px;
-}
-
-.aries-illustration__shape {
-  display: block;
-  position: absolute;
-}
-
-.aries-illustration__shape--back {
-  background: var(--aries-background-normal);
-  border: 2px solid var(--aries-border-normal);
-  border-radius: 16px;
-  height: 56px;
-  left: 28px;
-  top: 34px;
-  transform: rotate(-8deg);
-  width: 64px;
-}
-
-.aries-illustration__shape--main {
-  background: var(--aries-background-action01);
-  border-radius: 50%;
-  height: 42px;
-  left: 38px;
-  top: 39px;
-  width: 42px;
-}
-
-.aries-illustration__shape--accent {
-  background: var(--aries-icon-branding-yellow);
-  border-radius: 999px;
-  height: 12px;
-  left: 68px;
-  top: 28px;
-  width: 28px;
-}
-
-.aries-illustration__shape--dot {
-  background: var(--aries-background-enticing-bright);
-  border-radius: 50%;
-  height: 10px;
-  left: 30px;
-  top: 76px;
-  width: 10px;
 }
 
 .aries-illustration span {
@@ -77,43 +29,4 @@
   font-size: var(--aries-typography-android-subtitle2-size);
   line-height: var(--aries-typography-android-body1-line-height);
   text-align: center;
-}
-
-.aries-illustration[data-kind='error'] .aries-illustration__art {
-  background: var(--aries-background-danger-muted);
-}
-
-.aries-illustration[data-kind='error'] .aries-illustration__shape--main {
-  background: var(--aries-icon-danger);
-  border-radius: 10px;
-  clip-path: polygon(50% 0, 100% 86%, 0 86%);
-}
-
-.aries-illustration[data-kind='out-of-service'] .aries-illustration__art {
-  background: var(--aries-background-enticing-muted);
-}
-
-.aries-illustration[data-kind='out-of-service'] .aries-illustration__shape--main {
-  background: var(--aries-icon-enticing);
-  border-radius: 12px;
-}
-
-.aries-illustration[data-kind='connect-issue'] .aries-illustration__art {
-  background: var(--aries-background-supplementary);
-}
-
-.aries-illustration[data-kind='connect-issue'] .aries-illustration__shape--main {
-  background: transparent;
-  border: 8px solid var(--aries-icon-active);
-  border-bottom-color: transparent;
-  border-left-color: transparent;
-}
-
-.aries-illustration[data-kind='company-logo'] .aries-illustration__art {
-  background: var(--aries-background-action01);
-}
-
-.aries-illustration[data-kind='company-logo'] .aries-illustration__shape--main {
-  background: var(--aries-icon-branding-yellow);
-  border-radius: 12px;
 }

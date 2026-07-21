@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import * as RemixIcons from '@remixicon/react';
-import { Icon, iconNames, remixIconSourceByName } from '../components/shared/Icon';
+import { Icon, iconNames, remixIconSourceByName, type IconName } from '../components/shared/Icon';
 import './Documentation.css';
 
 const meta = {
@@ -80,7 +80,7 @@ export const Overview: Story = {
               <tr key={name}>
                 <td>{name}</td>
                 <td>{remixIconSourceByName[name]}</td>
-                <td>{usageByIconName[name]}</td>
+                <td>{usageByIconName[name] || 'Component-specific icon usage'}</td>
               </tr>
             ))}
           </tbody>
@@ -106,7 +106,7 @@ export const Overview: Story = {
   ),
 };
 
-const usageByIconName = {
+const usageByIconName: Partial<Record<IconName, string>> = {
   alert: 'Caution, warning, and error states',
   'arrow-left': 'Back navigation',
   briefcase: 'Jobs and work items',

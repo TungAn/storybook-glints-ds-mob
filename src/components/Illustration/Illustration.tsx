@@ -1,4 +1,9 @@
 import './Illustration.css';
+import companyLogoIllustration from './assets/company-logo.svg';
+import connectIssueIllustration from './assets/connect-issue.svg';
+import emptyIllustration from './assets/empty.svg';
+import errorIllustration from './assets/error.svg';
+import outOfServiceIllustration from './assets/out-of-service.svg';
 
 export type IllustrationKind = 'empty' | 'error' | 'out-of-service' | 'connect-issue' | 'company-logo';
 
@@ -16,6 +21,14 @@ const labelByKind: Record<IllustrationKind, string> = {
   'company-logo': 'Company logo',
 };
 
+const assetByKind: Record<IllustrationKind, string> = {
+  empty: emptyIllustration,
+  error: errorIllustration,
+  'out-of-service': outOfServiceIllustration,
+  'connect-issue': connectIssueIllustration,
+  'company-logo': companyLogoIllustration,
+};
+
 export const illustrationKinds: IllustrationKind[] = [
   'empty',
   'error',
@@ -29,12 +42,7 @@ export function Illustration({ kind = 'empty', label, size = 'default' }: Illust
 
   return (
     <div className="aries-illustration" data-kind={kind} data-size={size} aria-label={resolvedLabel} role="img">
-      <div className="aries-illustration__art" aria-hidden="true">
-        <span className="aries-illustration__shape aries-illustration__shape--back" />
-        <span className="aries-illustration__shape aries-illustration__shape--main" />
-        <span className="aries-illustration__shape aries-illustration__shape--accent" />
-        <span className="aries-illustration__shape aries-illustration__shape--dot" />
-      </div>
+      <img className="aries-illustration__art" src={assetByKind[kind]} alt="" aria-hidden="true" />
       {size === 'default' ? <span>{resolvedLabel}</span> : null}
     </div>
   );

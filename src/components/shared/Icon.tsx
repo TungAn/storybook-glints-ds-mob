@@ -10,6 +10,7 @@ import {
   RiCheckLine,
   RiCloseLine,
   RiEqualizerLine,
+  RiCustomerService2Line,
   RiFileTextFill,
   RiHotelFill,
   RiImageLine,
@@ -19,6 +20,7 @@ import {
   RiMoonFill,
   RiMovieLine,
   RiMoreFill,
+  RiPencilFill,
   RiRefreshLine,
   RiRestaurantFill,
   RiSearchLine,
@@ -42,6 +44,7 @@ export type IconName =
   | 'check'
   | 'chevron-down'
   | 'close'
+  | 'customer-service'
   | 'filter'
   | 'file-text'
   | 'hotel'
@@ -53,6 +56,7 @@ export type IconName =
   | 'more'
   | 'movie'
   | 'paperclip'
+  | 'pencil'
   | 'profile'
   | 'refresh'
   | 'restaurant'
@@ -83,6 +87,7 @@ export const remixIconByName: Record<IconName, RemixIconComponent> = {
   check: RiCheckLine,
   'chevron-down': RiArrowDownSLine,
   close: RiCloseLine,
+  'customer-service': RiCustomerService2Line,
   filter: RiEqualizerLine,
   'file-text': RiFileTextFill,
   hotel: RiHotelFill,
@@ -94,6 +99,7 @@ export const remixIconByName: Record<IconName, RemixIconComponent> = {
   more: RiMoreFill,
   movie: RiMovieLine,
   paperclip: RiAttachment2,
+  pencil: RiPencilFill,
   profile: RiUser3Line,
   refresh: RiRefreshLine,
   restaurant: RiRestaurantFill,
@@ -117,6 +123,7 @@ export const remixIconSourceByName: Record<IconName, string> = {
   check: 'RiCheckLine',
   'chevron-down': 'RiArrowDownSLine',
   close: 'RiCloseLine',
+  'customer-service': 'RiCustomerService2Line',
   filter: 'RiEqualizerLine',
   'file-text': 'RiFileTextFill',
   hotel: 'RiHotelFill',
@@ -128,6 +135,7 @@ export const remixIconSourceByName: Record<IconName, string> = {
   more: 'RiMoreFill',
   movie: 'RiMovieLine',
   paperclip: 'RiAttachment2',
+  pencil: 'RiPencilFill',
   profile: 'RiUser3Line',
   refresh: 'RiRefreshLine',
   restaurant: 'RiRestaurantFill',

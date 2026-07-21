@@ -18,6 +18,7 @@ export interface JobCardProps {
   submittedOn?: string;
   savedOn?: string;
   tags?: string[];
+  urgentLabel?: string;
   recruiterName?: string;
   recruiterStatus?: string;
   recruiterPremium?: boolean;
@@ -28,6 +29,18 @@ export interface SectionProps {
   title?: string;
   subtitle?: string;
   children?: React.ReactNode;
+}
+
+export interface FormListSectionProps {
+  title: string;
+  children?: React.ReactNode;
+}
+
+export interface FormNavigationRowProps {
+  label: string;
+  placeholder?: string;
+  value?: string;
+  required?: boolean;
 }
 
 export function JobCard({
@@ -41,9 +54,10 @@ export function JobCard({
   submittedOn = 'Submitted on 12 Jun 2026',
   savedOn = 'Saved on 12 Jun 2026',
   tags = ['Full-time', 'Remote', '1-3 years'],
+  urgentLabel = 'URGENT',
   recruiterName = 'Jane Doe',
   recruiterStatus = 'Online',
-  recruiterPremium = true,
+  recruiterPremium = false,
   actionLabel = 'APPLY',
 }: JobCardProps) {
   const isInactive = status === 'closed' || status === 'expired';
@@ -58,6 +72,9 @@ export function JobCard({
       ) : null}
 
       <div className="aries-job-card__header">
+        {cardType === 'search' ? (
+          <Tag label={urgentLabel} color="blue" type="bright" size="small" rounded={false} icon={false} />
+        ) : null}
         <h3>{title}</h3>
         {cardType !== 'application' ? <strong className="aries-job-card__salary">{salary}</strong> : null}
       </div>
@@ -89,7 +106,9 @@ export function JobCard({
       {cardType === 'search' ? (
         <div className="aries-job-card__cta-row">
           <div className="aries-job-card__recruiter">
-            <Avatar name={recruiterName} size={32} border />
+            <div className="aries-job-card__recruiter-photo">
+              <Avatar name={recruiterName} size={24} border />
+            </div>
             <div>
               <span>
                 <strong>{recruiterName}</strong>
@@ -133,7 +152,6 @@ function JobCardMeta({ company, location }: Pick<JobCardProps, 'company' | 'loca
         {company}
       </span>
       <span>
-        <Icon name="location" size={16} />
         {location}
       </span>
     </div>
@@ -161,5 +179,36 @@ export function Section({ title = 'Recommended Jobs', subtitle = 'Based on your 
       </header>
       <div>{children || <JobCard />}</div>
     </section>
+  );
+}
+
+export function FormListSection({ title, children }: FormListSectionProps) {
+  return (
+    <section className="aries-form-list-section" aria-labelledby={`${title.toLowerCase().replace(/\s/g, '-')}-title`}>
+      <h2 id={`${title.toLowerCase().replace(/\s/g, '-')}-title`}>{title}</h2>
+      <div>{children}</div>
+    </section>
+  );
+}
+
+export function FormNavigationRow({
+  label,
+  placeholder = 'Select an option',
+  value,
+  required = false,
+}: FormNavigationRowProps) {
+  return (
+    <button className="aries-form-navigation-row" type="button">
+      <span className="aries-form-navigation-row__copy">
+        <span className="aries-form-navigation-row__label">
+          {label}
+          {required ? <span aria-label="required">*</span> : null}
+        </span>
+        <span className="aries-form-navigation-row__value" data-populated={Boolean(value)}>
+          {value || placeholder}
+        </span>
+      </span>
+      <Icon name="chevron-down" size={18} />
+    </button>
   );
 }

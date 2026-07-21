@@ -1,7 +1,8 @@
 .aries-job-card {
   background: var(--aries-background-normal);
   box-sizing: border-box;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: var(--aries-space-small-4);
   padding: var(--aries-space-small-12) var(--aries-space-medium-16);
   width: 320px;
@@ -9,13 +10,13 @@
 
 .aries-job-card[data-card-type='search'],
 .aries-job-card[data-card-type='saved'] {
-  gap: var(--aries-space-small-8);
-  padding: var(--aries-space-medium-16);
+  gap: var(--aries-space-small-4);
+  padding: var(--aries-space-small-12) var(--aries-space-medium-16);
 }
 
 .aries-job-card[data-status='closed'],
 .aries-job-card[data-status='expired'] {
-  opacity: 0.72;
+  color: var(--aries-text-supplementary);
 }
 
 .aries-job-card__tags {
@@ -24,9 +25,9 @@
 }
 
 .aries-job-card__header {
-  align-items: flex-start;
+  align-items: center;
   display: flex;
-  gap: var(--aries-space-small-12);
+  gap: var(--aries-space-small-4);
   justify-content: space-between;
 }
 
@@ -38,23 +39,30 @@
 }
 
 .aries-job-card h3 {
+  flex: 1 1 auto;
   font-size: var(--aries-typography-android-subtitle1-size);
   font-weight: var(--aries-font-weight-semibold);
-  line-height: var(--aries-typography-android-body1-line-height);
+  letter-spacing: var(--aries-typography-android-subtitle1-letter-spacing);
+  line-height: var(--aries-typography-android-subtitle1-line-height);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .aries-job-card__salary {
   color: var(--aries-text-active);
   flex: 0 0 auto;
-  font-size: var(--aries-typography-android-subtitle2-size);
-  line-height: var(--aries-typography-android-body1-line-height);
+  font-size: var(--aries-typography-android-body1-size);
+  font-weight: var(--aries-font-weight-semibold);
+  line-height: var(--aries-typography-android-body2-line-height);
   text-align: right;
   white-space: nowrap;
 }
 
 .aries-job-card__meta {
   display: flex;
-  gap: var(--aries-space-small-12);
+  gap: var(--aries-space-small-0);
 }
 
 .aries-job-card__meta span,
@@ -64,7 +72,7 @@
   display: inline-flex;
   font-size: var(--aries-typography-android-subtitle2-size);
   gap: var(--aries-space-small-4);
-  line-height: var(--aries-typography-android-body1-line-height);
+  line-height: var(--aries-typography-android-subtitle2-line-height);
   margin: var(--aries-space-small-0);
 }
 
@@ -74,23 +82,49 @@
   min-width: 0;
 }
 
+.aries-job-card__meta span:last-child {
+  flex: 1 1 0;
+  justify-content: flex-end;
+  min-width: 0;
+  text-align: right;
+}
+
+.aries-job-card[data-status='closed'] h3,
+.aries-job-card[data-status='expired'] h3,
+.aries-job-card[data-status='closed'] .aries-job-card__meta span,
+.aries-job-card[data-status='expired'] .aries-job-card__meta span,
+.aries-job-card[data-status='closed'] .aries-job-card__salary,
+.aries-job-card[data-status='expired'] .aries-job-card__salary {
+  color: var(--aries-text-supplementary);
+}
+
 .aries-job-card__date {
   color: var(--aries-text-supplementary);
 }
 
 .aries-job-card__skill-tags {
+  align-items: flex-start;
+  box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
   gap: var(--aries-space-small-8);
+  max-height: 56px;
+  overflow: hidden;
+  padding-top: var(--aries-space-small-4);
 }
 
 .aries-job-card__cta-row {
   align-items: center;
-  border-top: 1px solid var(--aries-border-normal);
   display: flex;
   gap: var(--aries-space-small-12);
-  margin-top: var(--aries-space-small-4);
-  padding-top: var(--aries-space-small-12);
+  padding-top: var(--aries-space-small-8);
+}
+
+.aries-job-card__cta-row .aries-button {
+  height: 32px;
+  min-height: 32px;
+  padding-bottom: var(--aries-space-small-0);
+  padding-top: var(--aries-space-small-0);
 }
 
 .aries-job-card__recruiter {
@@ -101,9 +135,16 @@
   min-width: 0;
 }
 
+.aries-job-card__recruiter-photo {
+  align-items: center;
+  display: flex;
+  flex: 0 0 24px;
+  height: 32px;
+}
+
 .aries-job-card__recruiter > div {
   display: grid;
-  gap: var(--aries-space-small-4);
+  gap: var(--aries-space-small-0);
   min-width: 0;
 }
 
@@ -117,7 +158,8 @@
 .aries-job-card__recruiter strong {
   color: var(--aries-text-outstanding);
   font-size: var(--aries-typography-android-subtitle2-size);
-  line-height: var(--aries-typography-android-body2-line-height);
+  font-weight: var(--aries-font-weight-regular);
+  line-height: var(--aries-typography-android-subtitle2-line-height);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -125,8 +167,10 @@
 
 .aries-job-card__recruiter small {
   color: var(--aries-text-supplementary);
-  font-size: 11px;
-  line-height: var(--aries-typography-android-body2-line-height);
+  font-size: var(--aries-typography-android-overline-size);
+  font-weight: var(--aries-font-weight-medium);
+  letter-spacing: var(--aries-typography-android-overline-letter-spacing);
+  line-height: var(--aries-typography-android-overline-line-height);
 }
 
 .aries-company-card {
@@ -171,4 +215,77 @@
 .aries-section h2 {
   font-size: var(--aries-typography-android-subtitle1-size);
   line-height: var(--aries-typography-android-body1-line-height);
+}
+
+.aries-form-list-section {
+  background: var(--aries-background-normal);
+  box-sizing: border-box;
+  padding: var(--aries-space-medium-16) var(--aries-space-medium-16) var(--aries-space-small-0);
+  width: 360px;
+}
+
+.aries-form-list-section h2 {
+  color: var(--aries-text-outstanding);
+  font-size: var(--aries-typography-android-body2-size);
+  font-weight: var(--aries-font-weight-semibold);
+  line-height: var(--aries-typography-android-body2-line-height);
+  margin: var(--aries-space-small-0);
+}
+
+.aries-form-list-section > div {
+  display: grid;
+}
+
+.aries-form-navigation-row {
+  align-items: center;
+  background: var(--aries-background-normal);
+  border: 0;
+  border-bottom: 1px solid var(--aries-border-normal);
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  font-family: inherit;
+  gap: var(--aries-space-small-12);
+  min-height: 64px;
+  padding: var(--aries-space-small-12) var(--aries-space-small-0);
+  text-align: left;
+  width: 100%;
+}
+
+.aries-form-navigation-row:last-child {
+  border-bottom: 0;
+}
+
+.aries-form-navigation-row__copy {
+  display: grid;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.aries-form-navigation-row__label {
+  color: var(--aries-text-normal);
+  font-size: var(--aries-typography-android-subtitle2-size);
+  font-weight: var(--aries-font-weight-regular);
+  line-height: var(--aries-typography-android-subtitle2-line-height);
+}
+
+.aries-form-navigation-row__label span {
+  color: var(--aries-text-danger);
+}
+
+.aries-form-navigation-row__value {
+  color: var(--aries-text-supplementary);
+  font-size: var(--aries-typography-android-body1-size);
+  font-weight: var(--aries-font-weight-regular);
+  line-height: var(--aries-typography-android-body1-line-height);
+}
+
+.aries-form-navigation-row__value[data-populated='true'] {
+  color: var(--aries-text-outstanding);
+}
+
+.aries-form-navigation-row svg {
+  color: var(--aries-icon-normal);
+  flex: 0 0 auto;
+  transform: rotate(-90deg);
 }
