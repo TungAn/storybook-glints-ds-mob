@@ -41,6 +41,10 @@ export interface FormNavigationRowProps {
   placeholder?: string;
   value?: string;
   required?: boolean;
+  helperText?: string;
+  onClick?: React.ButtonHTMLAttributes<HTMLButtonElement>['onClick'];
+  trailing?: React.ReactNode;
+  chevron?: boolean;
 }
 
 export function JobCard({
@@ -196,9 +200,13 @@ export function FormNavigationRow({
   placeholder = 'Select an option',
   value,
   required = false,
+  helperText,
+  onClick,
+  trailing,
+  chevron = true,
 }: FormNavigationRowProps) {
-  return (
-    <button className="aries-form-navigation-row" type="button">
+  const rowContent = (
+    <>
       <span className="aries-form-navigation-row__copy">
         <span className="aries-form-navigation-row__label">
           {label}
@@ -207,8 +215,20 @@ export function FormNavigationRow({
         <span className="aries-form-navigation-row__value" data-populated={Boolean(value)}>
           {value || placeholder}
         </span>
+        {helperText ? <span className="aries-form-navigation-row__helper">{helperText}</span> : null}
       </span>
-      <Icon name="chevron-down" size={18} />
+      {trailing}
+      {chevron ? <Icon className="aries-form-navigation-row__chevron" name="chevron-down" size={18} /> : null}
+    </>
+  );
+
+  if (!onClick) {
+    return <div className="aries-form-navigation-row">{rowContent}</div>;
+  }
+
+  return (
+    <button className="aries-form-navigation-row" onClick={onClick} type="button">
+      {rowContent}
     </button>
   );
 }

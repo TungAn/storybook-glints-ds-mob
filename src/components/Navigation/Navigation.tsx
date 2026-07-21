@@ -7,6 +7,8 @@ export interface NavHeaderProps {
   backButton?: boolean;
   actionIcon?: IconName | false;
   avatar?: boolean;
+  onBackClick?: React.ButtonHTMLAttributes<HTMLButtonElement>['onClick'];
+  onActionClick?: React.ButtonHTMLAttributes<HTMLButtonElement>['onClick'];
 }
 
 export interface NavbarProps {
@@ -24,18 +26,20 @@ export function NavHeader({
   backButton = false,
   actionIcon = 'send',
   avatar = false,
+  onBackClick,
+  onActionClick,
 }: NavHeaderProps) {
   return (
     <header className="aries-nav-header">
       {backButton ? (
-        <button type="button" aria-label="Back">
+        <button onClick={onBackClick} type="button" aria-label="Back">
           <Icon name="arrow-left" size={24} />
         </button>
       ) : null}
       {avatar ? <Avatar name={title} size={32} /> : null}
       <h1>{title}</h1>
       {actionIcon ? (
-        <button type="button" aria-label="Header action">
+        <button onClick={onActionClick} type="button" aria-label="Header action">
           <Icon name={actionIcon} size={24} />
         </button>
       ) : null}

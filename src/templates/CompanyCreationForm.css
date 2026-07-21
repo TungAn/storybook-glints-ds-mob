@@ -2,7 +2,7 @@
   background: var(--aries-background-supplementary);
   color: var(--aries-text-outstanding);
   font-family: var(--aries-font-family-android);
-  height: 792px;
+  height: 840px;
   overflow: hidden;
   position: relative;
   width: 360px;
@@ -63,20 +63,33 @@
 }
 
 .aries-company-form__content {
-  height: calc(100% - 24px - 56px - 48px);
+  height: calc(100% - 24px - 56px - 68px - 48px);
   overflow: hidden;
-  padding-bottom: 132px;
 }
 
-.aries-company-form .aries-form-list-section + .aries-form-list-section {
+.aries-company-form .aries-form-list-section + .aries-form-list-section,
+.aries-company-form .aries-banner + .aries-form-list-section {
   border-top: 8px solid var(--aries-background-supplementary);
 }
 
-.aries-company-form__logo-wrap {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  padding-bottom: var(--aries-space-medium-16);
+.aries-company-form .aries-banner {
+  border-radius: 0;
+  min-height: 42px;
+  padding: var(--aries-space-small-12) var(--aries-space-medium-16);
+  width: 360px;
+}
+
+.aries-company-form .aries-banner__content {
+  gap: var(--aries-space-small-0);
+}
+
+.aries-company-form .aries-banner__content p {
+  font-size: var(--aries-typography-android-subtitle2-size);
+  line-height: var(--aries-typography-android-subtitle2-line-height);
+}
+
+.aries-company-form .aries-form-navigation-row:has(.aries-editable-company-logo) {
+  min-height: 96px;
 }
 
 .aries-company-form .aries-bottom-sheet__footer {
@@ -88,6 +101,96 @@
   position: absolute;
   width: 100%;
   z-index: 2;
+}
+
+.aries-company-form--edit {
+  height: 640px;
+}
+
+.aries-company-form--edit .aries-nav-header button:last-child {
+  color: var(--aries-icon-normal);
+}
+
+.aries-company-form__edit-content {
+  background: var(--aries-background-normal);
+  height: 220px;
+  padding: var(--aries-space-small-12) var(--aries-space-medium-16);
+}
+
+.aries-company-form__edit-content .aries-inline-error {
+  margin-top: var(--aries-space-small-4);
+}
+
+.aries-company-form--edit[data-keyboard-visible='true'] .aries-bottom-sheet__footer {
+  bottom: 272px;
+}
+
+.aries-company-form--edit[data-keyboard-visible='false'] .aries-bottom-sheet__footer {
+  bottom: 48px;
+}
+
+.aries-company-form--edit .aries-keyboard {
+  bottom: 48px;
+  position: absolute;
+  width: 360px;
+}
+
+.aries-company-form__guidance {
+  background: var(--aries-background-supplementary);
+  border-radius: 12px;
+  display: grid;
+  gap: var(--aries-space-small-8);
+  margin-top: var(--aries-space-medium-16);
+  padding: var(--aries-space-medium-16);
+}
+
+.aries-company-form__guidance strong {
+  color: var(--aries-text-normal);
+  font-size: var(--aries-typography-android-caption-size);
+  font-weight: var(--aries-font-weight-medium);
+  letter-spacing: var(--aries-typography-android-caption-letter-spacing);
+  line-height: var(--aries-typography-android-caption-line-height);
+}
+
+.aries-company-form__guidance-card {
+  align-items: center;
+  background: linear-gradient(135deg, #d6dde1, #f2f5f7);
+  border-radius: 8px;
+  color: var(--aries-text-outstanding);
+  display: grid;
+  height: 140px;
+  justify-items: center;
+  overflow: hidden;
+  padding: var(--aries-space-small-12);
+  position: relative;
+}
+
+.aries-company-form__guidance-card--wide {
+  height: 134px;
+}
+
+.aries-company-form__guidance-card span {
+  font-size: 28px;
+  font-weight: var(--aries-font-weight-bold);
+}
+
+.aries-company-form__guidance-card em {
+  background: var(--aries-background-dark);
+  border-radius: 2px;
+  bottom: var(--aries-space-small-12);
+  color: var(--aries-border-normal);
+  font-size: var(--aries-typography-android-subtitle2-size);
+  font-style: normal;
+  line-height: var(--aries-typography-android-subtitle2-line-height);
+  padding: var(--aries-space-small-8) var(--aries-space-small-12);
+  position: absolute;
+  text-align: center;
+}
+
+.aries-company-form__guidance-grid {
+  display: grid;
+  gap: var(--aries-space-small-8);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .aries-company-form__android-nav {

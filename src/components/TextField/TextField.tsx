@@ -1,7 +1,7 @@
 import { Icon } from '../shared/Icon';
 import './TextField.css';
 
-export type TextFieldState = 'normal' | 'pressed' | 'active' | 'filled' | 'disabled' | 'error';
+export type TextFieldState = 'normal' | 'pressed' | 'active' | 'focus' | 'filled' | 'disabled' | 'error';
 
 export interface TextFieldProps {
   label?: string;
@@ -9,6 +9,11 @@ export interface TextFieldProps {
   placeholder?: string;
   value?: string;
   state?: TextFieldState;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onBlur?: React.FocusEventHandler<HTMLInputElement>;
+  onFocus?: React.FocusEventHandler<HTMLInputElement>;
+  readOnly?: boolean;
+  autoFocus?: boolean;
 }
 
 export function TextField({
@@ -17,11 +22,25 @@ export function TextField({
   placeholder = 'Enter text',
   value,
   state = value ? 'filled' : 'normal',
+  onChange,
+  onBlur,
+  onFocus,
+  readOnly = true,
+  autoFocus = false,
 }: TextFieldProps) {
   return (
     <label className="aries-text-field" data-state={state}>
       {label ? <span className="aries-text-field__label">{label}</span> : null}
-      <input disabled={state === 'disabled'} placeholder={placeholder} readOnly value={value || ''} />
+      <input
+        autoFocus={autoFocus}
+        disabled={state === 'disabled'}
+        onBlur={onBlur}
+        onChange={onChange}
+        onFocus={onFocus}
+        placeholder={placeholder}
+        readOnly={readOnly}
+        value={value || ''}
+      />
       {helperText ? <small>{helperText}</small> : null}
     </label>
   );

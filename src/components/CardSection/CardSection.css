@@ -242,7 +242,6 @@
   border: 0;
   border-bottom: 1px solid var(--aries-border-normal);
   color: inherit;
-  cursor: pointer;
   display: flex;
   font-family: inherit;
   gap: var(--aries-space-small-12);
@@ -250,6 +249,10 @@
   padding: var(--aries-space-small-12) var(--aries-space-small-0);
   text-align: left;
   width: 100%;
+}
+
+button.aries-form-navigation-row {
+  cursor: pointer;
 }
 
 .aries-form-navigation-row:last-child {
@@ -280,11 +283,18 @@
   line-height: var(--aries-typography-android-body1-line-height);
 }
 
+.aries-form-navigation-row__helper {
+  color: var(--aries-text-supplementary);
+  font-size: var(--aries-typography-android-body1-size);
+  font-weight: var(--aries-font-weight-regular);
+  line-height: var(--aries-typography-android-body1-line-height);
+}
+
 .aries-form-navigation-row__value[data-populated='true'] {
   color: var(--aries-text-outstanding);
 }
 
-.aries-form-navigation-row svg {
+.aries-form-navigation-row__chevron {
   color: var(--aries-icon-normal);
   flex: 0 0 auto;
   transform: rotate(-90deg);

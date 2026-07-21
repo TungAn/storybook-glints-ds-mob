@@ -97,21 +97,25 @@ export function BottomSheetFooter({
   primaryLabel = 'Apply',
   secondaryLabel = 'Reset',
   layout = 'vertical',
+  onPrimaryClick,
+  onSecondaryClick,
 }: {
   primaryLabel?: string;
-  secondaryLabel?: string;
+  secondaryLabel?: string | false;
   layout?: 'vertical' | 'horizontal';
+  onPrimaryClick?: React.ButtonHTMLAttributes<HTMLButtonElement>['onClick'];
+  onSecondaryClick?: React.ButtonHTMLAttributes<HTMLButtonElement>['onClick'];
 }) {
   const primaryButton = (
-    <Button fullWidth size="large">
+    <Button fullWidth onClick={onPrimaryClick} size="large">
       {primaryLabel}
     </Button>
   );
-  const secondaryButton = (
-    <Button buttonType={layout === 'horizontal' ? 'outline' : 'ghost'} fullWidth size="large">
+  const secondaryButton = secondaryLabel ? (
+    <Button buttonType={layout === 'horizontal' ? 'outline' : 'ghost'} fullWidth onClick={onSecondaryClick} size="large">
       {secondaryLabel}
     </Button>
-  );
+  ) : null;
 
   return (
     <footer className="aries-bottom-sheet__footer" data-layout={layout}>
